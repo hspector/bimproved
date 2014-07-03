@@ -30,14 +30,15 @@ ShoppingList.prototype.getElement = function(id){
 
 ShoppingList.prototype.loadModel = function() {
     var myList = this;
-    
+    console.log("calling ajax");
     // send request to the server for the topics in the list
     $.ajax({
         type: "GET",
-        url: "/model/shopping",
+        url: "/model/bimproved",
     }).done(function(topics) {
         myList.topics = topics;
         topics.map(function(x){x.id=x["_id"];});
+		console.log("topics="+topics);
         shoppingView.refreshView(myList);
     });
 };
@@ -47,7 +48,7 @@ ShoppingList.prototype.addElement = function(newtopic){
     var myList = this;
     $.ajax({
         type: "POST",
-        url: "/model/shopping",
+        url: "/model/bimproved",
         data: JSON.stringify(newtopic),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -60,7 +61,7 @@ ShoppingList.prototype.updateElement = function(id,newtopic){
     var myList = this;
     $.ajax({
         type: "PUT",
-        url: "/model/shopping/"+id,
+        url: "/model/bimproved/"+id,
         data: JSON.stringify(newtopic),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -73,7 +74,7 @@ ShoppingList.prototype.deleteElement = function(id){
     var myList = this;
     $.ajax({
         type: "DELETE",
-        url: "/model/shopping/"+id,
+        url: "/model/bimproved/"+id,
     }).done(function(topics) {
         myList.loadModel();
     });

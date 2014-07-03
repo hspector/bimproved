@@ -22,21 +22,22 @@
     </div>
 
    <div id="welcome-view" class="view">
-	<p> This shopping app is a demo for the CS152aj class on Web and Mobile programming using Javascript.
+	<p> This app!!! is a demo for the CS152aj class on Web and Mobile programming using Javascript.
 		</p>
-	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
-	<button onclick="shoppingApp.showView('about')">About </button>
 	<button onclick="shoppingApp.showView('improvementList')">View list of improvement requests </button>
+	<button onclick="shoppingApp.showView('about')">About </button>
+	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
    </div>
    
    <div id="about-view" class="view">
 	<p> Jeremy is awesome!!!!
 		</p>
-	<button onclick="shoppingApp.showView('improvementPage')">File an improvement  </button>
+	<button onclick="shoppingApp.showView('improvementList')">View list of improvement requests  </button>
 	<button onclick="shoppingApp.showView('welcome')">Home </button>
+	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
    </div>
    
-	<div id="improvementList-view" class="view">
+	<div id="improvementPage-view" class="view">
 	<div class="input-group">
                 <span class="input-group-btn">
                     <button id="refreshBtn" class="btn btn-default" onclick="shoppingApp.reloadModel()">
@@ -45,8 +46,8 @@
                 </span>
 					
 				<span class="input-group-btn">
-                    <button id="btn btn-default"" class="btn btn-default" onclick="shoppingApp.showView('improvementPage')">
-                        File an improvement
+                    <button id="btn btn-default"" class="btn btn-default" onclick="shoppingApp.showView('improvementList')">
+                        View list of improvement requests
                     </button>
                 </span>	
 				
@@ -55,60 +56,18 @@
                         Home
                     </button>
                 </span>
-            </div>
-            <br />
-            <div class="panel">
-                <div id="complaintlisttitle">Outstanding Issues </div>
-            </div>
-            <div class="panel">
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Problem</th>
-                        <th>Location</th>
-                        <th>Time Reported</th>
-						<th>Urgency</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="itemTableBody"></tbody>
-            </table>
-            <div class="checkbox-inline">
-                <label>
-                    <input id="showCompleteCheckbox" type="checkbox" onclick="shoppingApp.refreshView()">
-                    Show Followup Items
-                </label>
-            </div>
-
-   </div>
-   
-   <div id="improvementPage-view" class="view">
-   
-	
-	<div class="input-group">
-		    <span class="input-group-btn" >
-			     <button id="refreshBtn" class="btn btn-default" onclick="shoppingApp.reloadModel()">
-				     Refresh</button>
-			</span>
-			<span> ...</span>
-			<span class="input-group-btn" >
-	   			<button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
-					Home </button>
-			</span>
-	</div>
-	 <table class="table table-striped">
-            <thead>
+	</div>			
+			<table class="table table-striped">
+               <thead>
                 <tr>
                     <th>Where</th>
                     <th>Problem</th>
                     <th>When</th>
 					<th>Urgency</th>
                 </tr>
-            </thead>
-            <tbody id="topicTableBody1">
-
-    <div class="panel">
+                </thead>
+			 	
+				<div class="panel">
 				<tbody>
 					<tr>						
 						<td> <form name="where"><select id="buidling">
@@ -120,18 +79,39 @@
 							</select></form></td>
 						<td> <input type="text" class="form-control" id="newtopicName" placeholder="Type the problem here!" onchange="shoppingApp.addtopic(this)"></td>
 						<td> <input type="date"></td>
-					
+
 						<td> <form name="where"><select id="buidling">
 								<option value="Low">Low</option>
 								<option value="Medium">Medium</option>
 								<option value="High">High</option>
 								<option value="Emergency">Emergency</option>
 							</select></form></td>
-							
+
 						<td><button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
 							Submit </button></td>
 					</tr>
 				</tbody>
+				</div>
+				</table>
+	</div>
+   
+   
+   <div id="improvementList-view" class="view">
+   
+	
+	<div class="input-group">
+		    <span class="input-group-btn" >
+			     <button id="refreshBtn" class="btn btn-default" onclick="shoppingApp.reloadModel()">
+				     Refresh</button>
+			</span>
+			<span class="input-group-btn" >
+	   			<button class="btn btn-default" onclick="shoppingApp.showView('improvementPage')">
+					File an improvement </button>
+			</span>
+			<span class="input-group-btn" >
+	   			<button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
+					Home </button>
+			</span>
 	</div>
 
         <table class="table table-striped">
@@ -141,7 +121,7 @@
                     <th>Problem</th>
                     <th>When</th>
 					<th>Urgency</th>
-					<th>Delete Request</th>
+					<th>Request Status</th>
                 </tr>
             </thead>
             <tbody id="topicTableBody">
@@ -159,9 +139,7 @@
 	            Cutoff</label>
         </div>
     </div>
-
-  </div>
- </div>
+	</div>
 </body>
 <script>
 // this is the code that actually starts the JavaScript application!!

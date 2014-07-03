@@ -54,17 +54,19 @@ var shoppingView = (function($){
     
     
     // redraw the table using the current model
-    function refreshTable(mytopics){    
+    function refreshTable(mytopics){ 
+				console.log("Called");
                 var rows = "";
                 var len = mytopics.length;
                 var filteredtopics = filtertopics(mytopics);
-                var sortedtopics = sorttopics(filteredtopics);
+                var sortedtopics = mytopics; //sorttopics(filteredtopics);
                 console.log("filteredtopics = "+ JSON.stringify(filteredtopics));
                 console.log("sortedtopics = "+JSON.stringify(sortedtopics));
                 
                 for(var n=0; n<sortedtopics.length; n++){ 
                     var topic = sortedtopics[n];
                     rows = rows + topicToRow(topic);
+					console.log("rows = "+rows);
                 }
 
                 var topicTableBody = $("#topicTableBody").html(rows);
@@ -76,11 +78,11 @@ var shoppingView = (function($){
         var row = 
         "<tr><td>"+topic.where+
         "</td><td>"+ 
-            "<input type='text' value='"+topic.problem+"' sid='"+topic.id+"' onchange='shoppingApp.editPrice(this)'>"+
+            topic.problem+ 
         "</td><td>"+
-            "<input type='text' value='"+topic.when+"' sid='"+topic.id+"' onchange='shoppingApp.editQuantity(this)'>"+
+            topic.when+  
         "</td><td>"+topic.urgency+
-        "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='shoppingApp.handleDeletetopic(this)'> "+  
+        "</td><td>" +topic.status+  
         "</td></tr>";
         return row;
     }
