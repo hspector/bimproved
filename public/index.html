@@ -5,6 +5,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script src="angular.js"></script>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
@@ -30,11 +31,17 @@
    </div>
    
    <div id="about-view" class="view">
-	<p> Jeremy is awesome!!!!
-		</p>
-	<button onclick="shoppingApp.showView('improvementList')">View list of improvement requests  </button>
+    <button onclick="shoppingApp.showView('improvementList')">View list of improvement requests  </button>
 	<button onclick="shoppingApp.showView('welcome')">Home </button>
 	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
+	<p>
+		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app,
+		you can now post requests to better Brandeis campus, review these requests, and do something about them. 
+		Whether it be a broken window, bad food, or crazy turkeys, you can post your issues onto this forum and
+		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
+		campus. If we work together, Brandeis can be a better place for everyone!
+		</p>
+	
    </div>
    
 	<div id="improvementPage-view" class="view">
@@ -70,24 +77,28 @@
 				<div class="panel">
 				<tbody>
 					<tr>						
-						<td> <form name="where"><select id="buidling">
+						<td> <form name="where"><select id="where">
 								<option value="Hassenfeld">Hassenfeld</option>
 								<option value="Rabb">Rabb</option>
 								<option value="Sherman Dining Hall">Sherman Dining Hall</option>
 								<option value="Usdan">Usdan</option>                   
 								<option value="Upper Sherman">Upper Sherman</option>S                                           
 							</select></form></td>
-						<td> <input type="text" class="form-control" id="newtopicName" placeholder="Type the problem here!" onchange="shoppingApp.addtopic(this)"></td>
-						<td> <input type="date"></td>
+						<td> <input type="text" class="form-control" id="problem" placeholder="Type the problem here!"></td>
+						<td> <input type="date" id= "when"></td>
 
-						<td> <form name="where"><select id="buidling">
+						<td> <form name="urgency"><select id="urgency">
 								<option value="Low">Low</option>
 								<option value="Medium">Medium</option>
 								<option value="High">High</option>
 								<option value="Emergency">Emergency</option>
 							</select></form></td>
+						<td> <form name="status"><select id="status">
+								<option value="Resolved">Resolved</option>
+								<option value="Unresolved">Unresolved</option>
+							</select></form></td>
 
-						<td><button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
+						<td><button class="btn btn-default" onclick ="shoppingApp.addtopic(where, problem, when, urgency, status )">
 							Submit </button></td>
 					</tr>
 				</tbody>
@@ -131,7 +142,7 @@
 
         <div class="checkbox-inline">
             <label><input id="showCompleteCheckbox" type="checkbox" onclick="shoppingApp.refreshView()"> 
-	            Show Purchased topics</label>
+	            Only Show Unesolved Topics</label>
         </div>
 
         <div class="checkbox-inline">

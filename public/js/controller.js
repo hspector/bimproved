@@ -20,21 +20,27 @@ var shoppingApp = (function($) {
     };
 
 
-    function handleDeletetopic(element) {
+    function handleDeletetopic(element1) {
         console.log("deleting topic");
-        console.log(" with id " + element.getAttribute("sid"));
-        myList.deleteElement(element.getAttribute("sid"));
+        console.log(" with id " + element1.getAttribute("sid"));
+        myList.deleteElement(element1.getAttribute("sid"));
 
     }
 
-    function addtopic(element) {
-        var element = document.getElementById("newtopicName");
-
-        console.log("new topic " + element.value);
+    function addtopic(element1, element2, element3, element4, element5) {
+        var element1 = document.getElementById("where");
+		var element2 = document.getElementById("problem");
+		var element3 = document.getElementById("when");
+		var element4 = document.getElementById("urgency");
+		var element5 = document.getElementById("status");
+		
+        console.log("new topic " + element2.value);
         myList.addElement({
-            action: element.value,
-            price: 0,
-            quantity: 0
+            where: element1.value,
+            problem: element2.value,
+            when: element3.value,
+			urgency: element4.value,
+			status: element5.value
         });
         element.value="";
     }

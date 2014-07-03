@@ -37,16 +37,13 @@ var shoppingView = (function($){
         var topic;
         var newtopics=[];
         var showComplete = $("#showCompleteCheckbox").prop("checked");
-        var cutoff = $("#cutOffText").val() || 0;
-        var wasPurchased;
+		var resolved;
 
         for(n=0; n<topics.length; n++){
             topic = topics[n]
-            wasPurchased = topic.purchased || false;
-            if (!wasPurchased ||  showComplete){
-                if (topic.quantity >= cutoff){
+			resolved = topic.resolved || false;
+            if (!resolved ||  showComplete){
                     newtopics.push(topic);
-                }
             }
         }
         return newtopics;
@@ -59,7 +56,7 @@ var shoppingView = (function($){
                 var rows = "";
                 var len = mytopics.length;
                 var filteredtopics = filtertopics(mytopics);
-                var sortedtopics = mytopics; //sorttopics(filteredtopics);
+                var sortedtopics = sorttopics(filteredtopics);
                 console.log("filteredtopics = "+ JSON.stringify(filteredtopics));
                 console.log("sortedtopics = "+JSON.stringify(sortedtopics));
                 
@@ -96,6 +93,11 @@ var shoppingView = (function($){
     
     function purchased(topic) {
         if(topic.purchased) return "checked";
+        else return "";
+    }
+	
+	function resolved(topic) {
+        if (angular.lowercase(topic.status).match(angular.lowercase(resolved))) return "checked";
         else return "";
     }
     
