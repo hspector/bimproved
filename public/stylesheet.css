@@ -1,17 +1,22 @@
 body{
- background-image:  url("sky.jpg");
-  background-size: 100%;
-  font-weight: bold;
+ background-image: url("sky.jpg");
+ background-size: 100%;
+ font-weight: bold;
 }
-#fontSize{
- font-size: 20px;
+h1 {
+	color: black;
+	text-align: center;
+	font-family: "Noteworthy";
+	border-style: dotted;
+	border-color: blue;
 }
-#color{
- color: black;
+p {
+	color: black;
+	font-family: "Noteworthy";
 }
-#size{
- height: 20px;
-} 
-#formSize{
- height: px;
-} 
+table {
+	color: black;
+	font-family: "Noteworthy";
+}
+
+
