@@ -8,7 +8,6 @@ var shoppingView = (function($){
     function refreshView(myData){
         refreshTable(myData.topics);
         updateTitle(myData.user);
-        updateTotalPrice(myData);
         
         
     }
@@ -20,11 +19,6 @@ var shoppingView = (function($){
         $("#title").html(newTitle);
     }
     
-    function updateTotalPrice(myData){
-        var numPurchases = myData.topics.filter(function(x){return x.purchased;}).length;
-        var totalText = "There total cost of the "+numPurchases+" purchased topics is "+ myData.totalPrice();
-        $("#totalprice").html(totalText);
-    }
     
     function sorttopics(topics){
         var sortedtopics = topics.slice();  // make a copy of topics
@@ -36,14 +30,18 @@ var shoppingView = (function($){
         var n;
         var topic;
         var newtopics=[];
+		var probFilter = $("#problemFilter").val().toLowerCase();
+		var topicProblem = $("#problem").val().toLowerCase();
         var showComplete = $("#showCompleteCheckbox").prop("checked");
 		var resolved;
 
         for(n=0; n<topics.length; n++){
             topic = topics[n]
-			resolved = topic.resolved || false;
-            if (!resolved ||  showComplete){
+			resolved = topic.purchased || false;
+            if (!resolved||  showComplete){
+				 if (topicProblem.match(probFilter)){
                     newtopics.push(topic);
+				 }
             }
         }
         return newtopics;
@@ -78,14 +76,13 @@ var shoppingView = (function($){
             topic.problem+ 
         "</td><td>"+
             topic.when+  
-        "</td><td>"+topic.urgency+
-        "</td><td>" +topic.status+  
+        "</td><td>"+topic.category+
+        "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='shoppingApp.purchasetopic(this)' "+purchased(topic)+ "> "+ 
+		"</td><td> <button type='button' span class='glyphicon glyphicon-star' sid='"+topic.id+"' onclick='shoppingApp.handleDeletetopic(this)'> "+
         "</td></tr>";
         return row;
     }
-    
-
-    
+        
     function editted(topic) {
         if(topic.edit) return "checked";
         else return "";
@@ -96,11 +93,6 @@ var shoppingView = (function($){
         else return "";
     }
 	
-	function resolved(topic) {
-        if (angular.lowercase(topic.status).match(angular.lowercase(resolved))) return "checked";
-        else return "";
-    }
-    
     shoppingView={
         refreshView: refreshView
     };

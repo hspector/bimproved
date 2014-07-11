@@ -70,8 +70,7 @@
                     <th>Where</th>
                     <th>Problem</th>
                     <th>When</th>
-					<th>Urgency</th>
-					<th>Status</th>
+					<th>Category</th>
                 </tr>
                 </thead>
 			 	
@@ -89,18 +88,13 @@
 						<td> <input id="problem" type="text" class="form-control"  placeholder="Type the problem here!"></td>
 						<td> <input id = "when" type="date" id= "when"></td>
 
-						<td> <form name="urgency"><select id="urgency">
-								<option value="Low">Low</option>
-								<option value="Medium">Medium</option>
-								<option value="High">High</option>
-								<option value="Emergency">Emergency</option>
+						<td> <form name="category"><select id="category">
+								<option value="Broken Item">Broken Item</option>
+								<option value="Sanitary Issue">Sanitary Issue</option>
+								<option value="Dining Hall">Dining Hall</option>
+								<option value="Bathroom">Bathroom</option>
 							</select></form></td>
-						<td> <form name="status"><select id="status">
-								<option value="Unresolved">Unresolved</option>
-								<option value="Resolved">Resolved</option>
-							</select></form></td>
-
-						<td><button class="btn btn-default" onclick ="shoppingApp.addtopic(where, problem, when, urgency, status )">
+						<td><button class="btn btn-default" onclick ="shoppingApp.addtopic(where, problem, when, category)">
 							Submit </button></td>
 					</tr>
 				</tbody>
@@ -133,8 +127,9 @@
                     <th>Where</th>
                     <th>Problem</th>
                     <th>When</th>
-					<th>Urgency</th>
-					<th>Request Status</th>
+					<th>Category</th>
+					<th>Resolved</th>
+					<th>Delete</th>
                 </tr>
             </thead>
             <tbody id="topicTableBody">
@@ -144,12 +139,12 @@
 
         <div class="checkbox-inline">
             <label><input id="showCompleteCheckbox" type="checkbox" onclick="shoppingApp.refreshView()"> 
-	            Only Show Unesolved Topics</label>
+	            Show Resolved Topics</label>
         </div>
 
         <div class="checkbox-inline">
-            <label><input id="cutOffText" type="text"  onchange="shoppingApp.refreshView()"> 
-	            Cutoff</label>
+            <label><input id="problemFilter" type="text"  onchange="shoppingApp.refreshView()"> 
+	            Search by Problem</label>
         </div>
     </div>
 	</div>

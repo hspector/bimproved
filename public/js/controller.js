@@ -20,29 +20,27 @@ var shoppingApp = (function($) {
     };
 
 
-    function handleDeletetopic(element1) {
+    function handleDeletetopic(element) {
         console.log("deleting topic");
-        console.log(" with id " + element1.getAttribute("sid"));
-        myList.deleteElement(element1.getAttribute("sid"));
+        console.log(" with id " + element.getAttribute("sid"));
+        myList.deleteElement(element.getAttribute("sid"));
 
     }
 
-    function addtopic(element1, element2, element3, element4, element5) {
+    function addtopic(element1, element2, element3, element4) {
         var element1 = document.getElementById("where");
 		var element2 = document.getElementById("problem");
 		var element3 = document.getElementById("when");
-		var element4 = document.getElementById("urgency");
-		var element5 = document.getElementById("status");
+		var element4 = document.getElementById("category");
 		
         console.log("new topic " + element2.value);
         myList.addElement({
             where: element1.value,
             problem: element2.value,
             when: element3.value,
-			urgency: element4.value,
-			status: element5.value
+			category: element4.value,
         });
-        element.value="";
+        //element.value="";
     }
     
     function editPrice(element){
@@ -72,10 +70,9 @@ var shoppingApp = (function($) {
     function purchasetopic(element) {
         var topicId = element.getAttribute("sid");
         var topic;
-        console.log("purchasing topic "+topicId);
+        console.log("purchasing item "+topicId);
         topic = myList.getElement(topicId);
         topic.purchased= !topic.purchased;
-        myList.updateElement(topic.id,topic);
         refreshView();
     }
 

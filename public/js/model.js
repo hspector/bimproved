@@ -8,7 +8,7 @@
 
 function ShoppingList() {
     this.user = "Tim";
-    this.cutoff = 0;
+    this.probFilter = "";
     this.topics = [];
 
 };
