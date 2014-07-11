@@ -17,19 +17,38 @@
 <body>
   <div class="container">
     <div class="page-header">
-		<img src="b.png" alt="b" width="42" height="42" onclick="shoppingApp.showView('welcome')"/>
-        <h1> <span id="title">TITLE GOES HERE</span>
+		<img src="b.png" alt="b" width="42" height="42" ALIGN=center onclick="shoppingApp.showView('welcome')"/>
+        <h1 ALIGN=center> <span id="title">TITLE GOES HERE</span>
         </h1>
     </div>
 
    <div id="welcome-view" class="view">
-	<p> This app!!! is a demo for the CS152aj class on Web and Mobile programming using Javascript.
-		</p>
-	<button onclick="shoppingApp.showView('improvementList')">View list of improvement requests </button>
-	<button onclick="shoppingApp.showView('about')">About </button>
-	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
+   	<p> <button onclick="shoppingApp.showView('about')">About </button> </p>
+   	<table style="width:3000px">
+   		<tr>
+   			<td> <font size="5"> Administrator Login </font> </td>
+   			<td> <font size="5"> Improver Login </font> </td>
+   		</tr>
+    </table>
+    <br>
+	<table style="width:3000px">
+		<tr>
+			<td> Brandeis e-mail: <input type="text"> <td>
+			<td> Brandeis e-mail: <input type="text"> <td>
+		</tr>
+		<tr>
+			<td> Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
+			<td> Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
+		</tr>
+    </table>
+    <br>
+	<table style="width:3000px">
+		<tr>
+			<td> <button onclick="shoppingApp.showView('improvementList')"> Login as Administrator </button> </td>
+			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login as Improver </button> </td>
+		</tr>
+    </table>
    </div>
-   
    <div id="about-view" class="view">
     <button onclick="shoppingApp.showView('improvementList')">View list of improvement requests  </button>
 	<button onclick="shoppingApp.showView('welcome')">Home </button>
