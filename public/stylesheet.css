@@ -1,22 +1,26 @@
 body{
  background-image: url("sky.jpg");
  background-size: 100%;
- font-weight: bold;
+ font-family: 'Delius', cursive;
 }
 h1 {
 	color: black;
 	text-align: center;
-	font-family: "Noteworthy";
-	border-style: dotted;
-	border-color: blue;
+	font-family: 'Delius', cursive;
+}
+h2 {
+	color:black;
+	text-align: center;
+	font-size: medium;
 }
 p {
 	color: black;
-	font-family: "Noteworthy";
+	font-family: 'Delius', cursive;
+	font-size: large;
 }
 table {
 	color: black;
-	font-family: "Noteworthy";
+	font-family: 'Delius', cursive;
 }
 
 
