@@ -40,7 +40,10 @@ var shoppingApp = (function($) {
             when: element3.value,
 			category: element4.value,
         });
-        //element.value="";
+        //element1.value="";
+		//element2.value="";
+		//element3.value="";
+		//element4.value="";
     }
     
     function editPrice(element){

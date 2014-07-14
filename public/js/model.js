@@ -7,8 +7,7 @@
 **/
 
 function ShoppingList() {
-    this.user = "Brandeisian";
-    this.probFilter = "";
+    this.user = "Tim";
     this.topics = [];
 
 };

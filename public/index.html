@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Brandeis Improvements</title>	
-	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
+    <title>Brandeis Improvements</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -18,43 +17,26 @@
 <body>
   <div class="container">
     <div class="page-header">
-		<img src="b.png" alt="b" width="42" height="42" ALIGN=center onclick="shoppingApp.showView('welcome')"/>
-        <h1> <span id="title">TITLE GOES HERE</span> </h1>
+		<img src="b.png" alt="b" width="42" height="42" onclick="shoppingApp.showView('welcome')"/>
+        <h1> <span id="title">TITLE GOES HERE</span>
+        </h1>
     </div>
 
    <div id="welcome-view" class="view">
-   	<h2> <button onclick="shoppingApp.showView('about')"> About </button> </h2>
-   	<br>
-   	<table style="width:3000px">
-   		<tr>
-   			<td> <font size="5"> Administrator Login </font> </td>
-   			<td> <font size="5"> Improver Login </font> </td>
-   		</tr>
-    </table>
-    <br>
-	<table style="width:3000px">
-		<tr>
-			<td> Brandeis e-mail: <input type="text"> <td>
-			<td> Brandeis e-mail: <input type="text"> <td>
-		</tr>
-		<tr>
-			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
-			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
-		</tr>
-    </table>
-    <br>
-	<table style="width:3000px">
-		<tr>
-			<td> <button onclick="shoppingApp.showView('improvementList')"> Login as Administrator </button> </td>
-			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login as Improver </button> </td>
-		</tr>
-    </table>
+	<p> This app!!! is a demo for the CS152aj class on Web and Mobile programming using Javascript.
+		</p>
+	<button onclick="shoppingApp.showView('improvementList')">View list of improvement requests </button>
+	<button onclick="shoppingApp.showView('about')">About </button>
+	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
    </div>
+   
    <div id="about-view" class="view">
-	<button onclick="shoppingApp.showView('welcome')"> Home </button>
+    <button onclick="shoppingApp.showView('improvementList')">View list of improvement requests  </button>
+	<button onclick="shoppingApp.showView('welcome')">Home </button>
+	<button onclick="shoppingApp.showView('improvementPage')">File an improvement </button>
 	<p>
-		<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
+		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app,
+		you can now post requests to better Brandeis campus, review these requests, and do something about them. 
 		Whether it be a broken window, bad food, or crazy turkeys, you can post your issues onto this forum and
 		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
 		campus. If we work together, Brandeis can be a better place for everyone!
@@ -64,6 +46,12 @@
    
 	<div id="improvementPage-view" class="view">
 	<div class="input-group">
+                <span class="input-group-btn">
+                    <button id="refreshBtn" class="btn btn-default" onclick="shoppingApp.reloadModel()">
+                        Refresh
+                    </button>
+                </span>
+					
 				<span class="input-group-btn">
                     <button id="btn btn-default" class="btn btn-default" onclick="shoppingApp.showView('improvementList')">
                         View list of improvement requests
@@ -155,7 +143,7 @@
         </div>
 
         <div class="checkbox-inline">
-            <label><input id="problemFilter" type="text"  onchange="shoppingApp.refreshView()"> 
+            <label><input id="problemFilter" type="text"  placeholder="search" onchange="shoppingApp.refreshView()"> 
 	            Search by Problem</label>
         </div>
     </div>
