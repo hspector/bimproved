@@ -30,15 +30,16 @@ var shoppingView = (function($){
         var n;
         var topic;
         var newtopics=[];
-		var probFilter = $.trim($("#problemFilter").val().toLowerCase());
+		var probFilter = $("#problemFilter").val().toLowerCase();
+		var topicProblem = $("#problem").val().toLowerCase();
         var showComplete = $("#showCompleteCheckbox").prop("checked");
 		var resolved;
 
         for(n=0; n<topics.length; n++){
             topic = topics[n]
 			resolved = topic.purchased || false;
-            if (!resolved|| showComplete){
-				 if (probFilter.match(topic.problem)){
+            if (!resolved||  showComplete){
+				 if (topicProblem.match(probFilter)){
                     newtopics.push(topic);
 				 }
             }

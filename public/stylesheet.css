@@ -1,17 +1,26 @@
 body{
- background-image:  url("sky.jpg");
-  background-size: 100%;
-  font-weight: bold;
+ background-image: url("sky.jpg");
+ background-size: 100%;
+ font-family: 'Delius', cursive;
 }
-#fontSize{
- font-size: 20px;
+h1 {
+	color: black;
+	text-align: center;
+	font-family: 'Delius', cursive;
 }
-#color{
- color: black;
+h2 {
+	color:black;
+	text-align: center;
+	font-size: medium;
 }
-#size{
- height: 20px;
-} 
-#formSize{
- height: px;
-} 
+p {
+	color: black;
+	font-family: 'Delius', cursive;
+	font-size: large;
+}
+table {
+	color: black;
+	font-family: 'Delius', cursive;
+}
+
+
