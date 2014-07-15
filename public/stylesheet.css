@@ -22,4 +22,6 @@ table {
 	color: black;
 	font-family: 'Delius', cursive;
 	width: 100%;
+	text-align: center;
+	font-size: large;
 }
