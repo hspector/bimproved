@@ -1,5 +1,5 @@
 body{
- background-image: url("background3.jpg");
+ background-image: url("sky.jpg");
  background-size: 100%;
  font-family: 'Delius', cursive;
 }
@@ -13,16 +13,18 @@ h2 {
 	text-align: center;
 	font-size: medium;
 }
-problem{
-	height: 100px;
-}
 p {
 	color: black;
 	font-family: 'Delius', cursive;
-	font-size: large;
 }
-table {
+p#confirmation {
+	text-align: center;
+	table-layout: center;
+
+}
+table#login{
 	color: black;
 	font-family: 'Delius', cursive;
 	width: 100%;
+	text-align: center;
 }

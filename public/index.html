@@ -3,6 +3,7 @@
 <head>
 	<title>Brandeis Improvements</title>	
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -22,31 +23,27 @@
         <h1> <span id="title">TITLE GOES HERE</span> </h1>
     </div>
 
-   <div id="welcome-view" class="view">
+    <div id="welcome-view" class="view">
    	<h2> <button onclick="shoppingApp.showView('about')"> About </button> </h2>
    	<br>
-   	<table>
+   	<table id = "login">
    		<tr>
-   			<td> <font size="5">Administrator Login</font> </td>
-   			<td> <font size="5">Improver Login</font> </td>
+   			<td> <font size="5">Login</font> </td>
    		</tr>
     </table>
     <br>
-	<table>
+	<table id = "login">
 		<tr>
-			<td> Brandeis e-mail: <input type="text"> <td>
 			<td> Brandeis e-mail: <input type="text"> <td>
 		</tr>
 		<tr>
-			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
-			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
+			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
 		</tr>
-    </table>
+    </table id = "login">
     <br>
-	<table>
+	<table id = "login">
 		<tr>
-			<td> <button onclick="shoppingApp.showView('improvementList')"> Login as Administrator </button> </td>
-			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login as Improver </button> </td>
+			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login </button> </td>
 		</tr>
     </table>
    </div>
