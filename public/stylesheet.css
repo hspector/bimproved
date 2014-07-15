@@ -1,5 +1,5 @@
 body{
- background-image: url("sky.jpg");
+ background-image: url("background3.jpg");
  background-size: 100%;
  font-family: 'Delius', cursive;
 }
@@ -12,6 +12,9 @@ h2 {
 	color:black;
 	text-align: center;
 	font-size: medium;
+}
+problem{
+	height: 100px;
 }
 p {
 	color: black;

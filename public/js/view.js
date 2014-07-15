@@ -25,6 +25,7 @@ var shoppingView = (function($){
         sortedtopics.sort(function(a,b){ return(a.action > b.action)});
         return sortedtopics;
     }
+	
     
     function filtertopics(topics){
         var n;

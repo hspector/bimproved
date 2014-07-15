@@ -23,16 +23,30 @@ var shoppingApp = (function($) {
     function handleDeletetopic(element) {
         console.log("deleting topic");
         console.log(" with id " + element.getAttribute("sid"));
+		$( "#clickme" ).click(function() {
+			$( "#book" ).hide( "slow", function() {
+			alert( "Animation complete." );
+			});
+        });
         myList.deleteElement(element.getAttribute("sid"));
 
     }
+	function animateDeletetopic(element) {
+			$(element.getAttribute("sid")).hide( "slow", function() {
+			alert( "Animation complete." );
+			});
+    }
 
     function addtopic(element1, element2, element3, element4) {
-        var element1 = document.getElementById("where");
+
+		var element1 = document.getElementById("where");
 		var element2 = document.getElementById("problem");
 		var element3 = document.getElementById("when");
 		var element4 = document.getElementById("category");
-		
+		if(element2.value.length==0||element3.value.length==0){
+			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please try again");
+			return;
+		}
         console.log("new topic " + element2.value);
         myList.addElement({
             where: element1.value,
