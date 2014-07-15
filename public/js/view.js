@@ -31,15 +31,28 @@ var shoppingView = (function($){
         var topic;
         var newtopics=[];
 		var probFilter = $.trim($("#problemFilter").val().toLowerCase());
+		var dateFilter = $.trim($("#dateFilter").val().toLowerCase());
+		var categoryFilter = $.trim($("#categoryFilter").val().toLowerCase());
+		var locFilter = $.trim($("#locationFilter").val().toLowerCase());
         var showComplete = $("#showCompleteCheckbox").prop("checked");
+		var e = document.getElementById("category");
+        var strUser = e.options[e.selectedIndex].text;
 		var resolved;
 
         for(n=0; n<topics.length; n++){
             topic = topics[n]
 			resolved = topic.purchased || false;
             if (!resolved|| showComplete){
-				 if (probFilter.match(topic.problem)){
-                    newtopics.push(topic);
+				 if (dateFilter== "" || topic.when.match(dateFilter)){
+					if (probFilter== "" || topic.problem.match(probFilter)){
+						if (locFilter == "" || topic.where.match(locFilter)){
+							if (categoryFilter == "" || topic.category.match(categoryFilter)){
+						console.log("location is " + topic.where);
+						console.log("categoryFilter is " + categoryFilter );
+                        newtopics.push(topic);
+							}
+						}
+					}
 				 }
             }
         }
@@ -77,7 +90,7 @@ var shoppingView = (function($){
             topic.when+  
         "</td><td>"+topic.category+
         "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='shoppingApp.purchasetopic(this)' "+purchased(topic)+ "> "+ 
-		"</td><td> <button type='button' span class='glyphicon glyphicon-star' sid='"+topic.id+"' onclick='shoppingApp.handleDeletetopic(this)'> "+
+		"</td><td> <span class='glyphicon glyphicon-remove' sid='"+topic.id+"' onclick='shoppingApp.handleDeletetopic(this)'> "+
         "</td></tr>";
         return row;
     }

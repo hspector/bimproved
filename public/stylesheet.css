@@ -21,4 +21,5 @@ p {
 table {
 	color: black;
 	font-family: 'Delius', cursive;
+	width: 100%;
 }
