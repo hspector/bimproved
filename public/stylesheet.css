@@ -18,6 +18,11 @@ p {
 	font-family: 'Delius', cursive;
 	font-size: large;
 }
+p#confirmation {
+	text-align: center;
+	table-layout: center;
+
+}
 table {
 	color: black;
 	font-family: 'Delius', cursive;

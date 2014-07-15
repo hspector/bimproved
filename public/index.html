@@ -43,10 +43,11 @@
     <br>
 	<table>
 		<tr>
-			<td> <button onclick="shoppingApp.showView('improvementList')"> Login </button> </td>
+			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login </button> </td>
 		</tr>
     </table>
    </div>
+
    <div id="about-view" class="view">
 	<button onclick="shoppingApp.showView('welcome')"> Home </button>
 	<p>
@@ -56,6 +57,22 @@
 		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
 		campus. If we work together, Brandeis can be a better place for everyone!
 		</p>
+
+   </div>
+
+   <div id="submitAndConfirm-view" class="view">
+	<p id="confirmation">
+	<br>
+	You have succesfully submitted your improvement. Thank you!
+	</p>
+	<br>
+	<table>
+		<div style="text-align:center;">
+			<button onclick="shoppingApp.showView('improvementList')"> View List of Improvement Requests </button>
+			<button onclick="shoppingApp.showView('improvementPage')"> File Another Improvement </button>
+			<button onclick="shoppingApp.showView('welcome')"> Home </button>
+		</div>
+    </table>
 
    </div>
    
@@ -103,7 +120,7 @@
 								<option value="Dining Hall">Dining Hall</option>
 								<option value="Bathroom">Bathroom</option>
 							</select></form></td>
-						<td><button class="btn btn-default" onclick ="shoppingApp.addtopic(where, problem, when, category)">
+						<td><button class="btn btn-default" onclick="shoppingApp.addtopic(where, problem, when, category); shoppingApp.showView('submitAndConfirm');">
 							Submit </button></td>
 					</tr>
 				</tbody>
