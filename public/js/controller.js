@@ -45,6 +45,7 @@ var shoppingApp = (function($) {
 		var element4 = document.getElementById("category");
 		if(element2.value.length==0||element3.value.length==0){
 			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please try again");
+            return;
 		}
 		
         console.log("new topic " + element2.value);
