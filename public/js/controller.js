@@ -45,8 +45,8 @@ var shoppingApp = (function($) {
 		var element4 = document.getElementById("category");
 		if(element2.value.length==0||element3.value.length==0){
 			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please try again");
-			return;
 		}
+		
         console.log("new topic " + element2.value);
         myList.addElement({
             where: element1.value,
@@ -54,6 +54,7 @@ var shoppingApp = (function($) {
             when: element3.value,
 			category: element4.value,
         });
+		shoppingApp.showView('confirm');
         //element1.value="";
 		//element2.value="";
 		//element3.value="";

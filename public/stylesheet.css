@@ -1,5 +1,5 @@
 body{
- background-image: url("sky.jpg");
+ background-image: url("lightBlue.jpg");
  background-size: 100%;
  font-family: 'Delius', cursive;
 }
@@ -27,4 +27,10 @@ table#login{
 	font-family: 'Delius', cursive;
 	width: 100%;
 	text-align: center;
+}
+.scroll{
+	overflow-y:scroll;
+	overflow-x:hidden;
+	height:275px;
+	width:100%;
 }
