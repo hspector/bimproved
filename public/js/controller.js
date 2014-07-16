@@ -125,6 +125,16 @@ var shoppingApp = (function($) {
 
 
     }
+    function valiDate() {
+        var d = new Date();
+        var curr_date = d.getDate();
+        var curr_month = d.getMonth();
+        var curr_year = d.getFullYear();
+        var complete_date = (curr_year + "-" + curr_month + "-" + curr_date);
+        console.log(complete_date);
+        document.getElementById("when").value = complete_date;
+    }
+
 
     // here is were we decide what is visible to the outside!
     shoppingApp = {
@@ -137,7 +147,8 @@ var shoppingApp = (function($) {
         reloadModel: reloadModel,
         editPrice: editPrice,
         editQuantity: editQuantity,
-        showView: showView
+        showView: showView,
+        valiDate: valiDate
     }
 
     return (shoppingApp);
