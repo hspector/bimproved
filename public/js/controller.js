@@ -1,6 +1,6 @@
 /**
  demo.js
- This provides the model and controller for the shopping list app!
+ This provides the model and controller for the bimproved list app!
  It is written entirely in JavaScript with no use of AngularJS
  but it does just jQuery to handle the ajax calls in a browser independent manner...
  and it uses jQuery to access and modify the HTML file index.html
@@ -8,16 +8,26 @@
  VERSION 1.0.1 -- here is where we start adding some functionality
  **/
 
-var shoppingApp = (function($) {
+var bimprovedApp = (function($) {
 
 
     // first create the model
-    var myList = new ShoppingList();
+    var myList = new bimprovedList();
     
     var showView = function(selected) {
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
     };
+	
+	 function valiDate() {
+        var d = new Date();
+        var curr_date = d.getDate();
+        var curr_month = d.getMonth();
+        var curr_year = d.getFullYear();
+        var complete_date = (curr_month + "-" + curr_date + "-" + curr_year);
+        console.log(complete_date);
+        document.getElementById("when").value = complete_date;
+    }
 
 
     function handleDeletetopic(element) {
@@ -36,7 +46,26 @@ var shoppingApp = (function($) {
 			alert( "Animation complete." );
 			});
     }
-
+	function signIn(){
+			var element1 = $.trim($("#email").val().toLowerCase());
+			var element2 = $.trim($("#password").val().toLowerCase());
+			console.log("email is " + element1);
+			console.log("password is " + element2);
+			if(element1.match("jekolosk@brandeis.edu")&& element2.match("yellow")){
+				bimprovedApp.showView('improvementPage');
+				return;
+			}
+			if(element1.match("tjhickey@brandeis.edu")&& element2.match("cosi")){
+				bimprovedApp.showView('improvementList');
+				return;
+			}
+			if(element1.length==0 && element2.length==0){
+				bimprovedApp.showView('improvementList');
+				return;
+			}
+				alert("Either your password or email is wrong. Please try again with your Brandeis Unet ID");
+			
+	}
     function addtopic(element1, element2, element3, element4) {
 
 		var element1 = document.getElementById("where");
@@ -44,7 +73,20 @@ var shoppingApp = (function($) {
 		var element3 = document.getElementById("when");
 		var element4 = document.getElementById("category");
 		if(element2.value.length==0||element3.value.length==0){
-			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please try again");
+			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please fill out the boxes highlighted red");
+			if(element2.value.length==0){
+			element2.style.border= "solid red";
+			}
+			if(element3.value.length==0){
+			element3.style.border= "solid red";
+			}
+			if(element2.value.length!=0){
+			element2.style.border= "";
+			}
+			if(element3.value.length!=0){
+			element3.style.border= "";
+			}
+			return;
 		}
 		
         console.log("new topic " + element2.value);
@@ -54,52 +96,27 @@ var shoppingApp = (function($) {
             when: element3.value,
 			category: element4.value,
         });
-		shoppingApp.showView('confirm');
+		bimprovedApp.showView('confirm');
         //element1.value="";
 		//element2.value="";
 		//element3.value="";
 		//element4.value="";
     }
     
-    function editPrice(element){
-        var topicId = element.getAttribute("sid");
-        var topicVal = element.value;
-        var topic;
-        console.log("topic "+topicId+" has value "+topicVal);
-        topic = myList.getElement(topicId);
-        topic.price = topicVal;
-        myList.updateElement(topic.id,topic);
-        refreshView();
-        
-    }
-    
-    function editQuantity(element){
-        var topicId = element.getAttribute("sid");
-        var topicVal = element.value;
-        var topic;
-        console.log("topic "+topicId+" has value "+topicVal);
-        topic = myList.getElement(topicId);
-        topic.quantity = topicVal;
-        myList.updateElement(topic.id,topic);
-        refreshView();
-        
-    }
+   
 
-    function purchasetopic(element) {
+    function resolvetopic(element) {
         var topicId = element.getAttribute("sid");
         var topic;
         console.log("purchasing item "+topicId);
         topic = myList.getElement(topicId);
-        topic.purchased= !topic.purchased;
+        topic.resolved= !topic.resolved;
         refreshView();
     }
 
-    function edittopic(element) {
-        console.log("editing topic "+element.getAttribute("sid"));
-    }
 
     function refreshView(){
-        shoppingView.refreshView(myList);
+        bimprovedView.refreshView(myList);
     }
 
     function reloadModel(){
@@ -119,27 +136,26 @@ var shoppingApp = (function($) {
     function start() {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
-        shoppingView.refreshView(myList);
+        bimprovedView.refreshView(myList);
         showView("welcome");
 
 
     }
 
     // here is were we decide what is visible to the outside!
-    shoppingApp = {
+    bimprovedApp = {
         start: start,
+		valiDate: valiDate,
         addtopic: addtopic,
+		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
         refreshView: refreshView,
-        purchasetopic: purchasetopic,
-        edittopic: edittopic,
+        resolvetopic: resolvetopic,
         reloadModel: reloadModel,
-        editPrice: editPrice,
-        editQuantity: editQuantity,
         showView: showView
     }
 
-    return (shoppingApp);
+    return (bimprovedApp);
 
 }(jQuery));
 

@@ -15,49 +15,46 @@
     <script src="js/controller.js"></script>
 
 
-
 </head>
 <body>
   <div class="container">
-    <div class="page-header">
-		<img src="b.png" alt="b" width="42" height="42" onclick="shoppingApp.showView('welcome')"/>
-        <h1> <span id="title">TITLE GOES HERE</span> </h1>
+    <div class="page-header background">
+		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('welcome')"/>
+        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('welcome')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('welcome')"/></span> </h1>
     </div>
 
     <div id="welcome-view" class="view">
-   	<h2> <button onclick="shoppingApp.showView('about')"> About </button> </h2>
-   	<br>
-   	<table id = "login">
-   		<tr>
-   			<td> <font size="5">Login</font> </td>
-   		</tr>
-    </table>
-    <br>
-	<table id = "login">
-		<tr>
-			<td> Brandeis e-mail: <input type="text"> <td>
-		</tr>
-		<tr>
-			<td> Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"> <td>
-		</tr>
-    </table>
-    <br>
-	<table id = login>
-		<tr>
-			<td> <button onclick="shoppingApp.showView('improvementPage')"> Login </button> </td>
-		</tr>
-    </table>
+	
+   	<h2> 	<button class = "btn btn-info" onclick="bimprovedApp.showView('about')"> About </button> </h2><br><br>
+			<div style="text-align:center;">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="email" class="col-sm-4 control-label">Email</label>
+						<div class="col-sm-8 inp">
+							<input type="email" size="35" class="form-control" id="email" placeholder="Email">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-sm-4 control-label">Password</label>
+						<div class="col-sm-8 inp">
+							<input type="password" class="form-control" id="password" placeholder ="Password" onchange= "bimprovedApp.signIn()" >
+						</div>
+				</div>
+			</form>
+			</div>
+			<br><br>
+			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>-->
    </div>
    
    <div id="about-view" class="view">
-	<button onclick="shoppingApp.showView('welcome')"> Home </button>
+	<button class = "btn btn-info" onclick="bimprovedApp.showView('welcome')"> Home </button>
 	<p>
-		<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
+		<br><font size="5">
+		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
 		Whether it be a broken window, bad food, or crazy turkeys, you can post your issues onto this forum and
 		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
 		campus. If we work together, Brandeis can be a better place for everyone!
-		</p>
+		</p></font>
 
    </div>
     <div id="confirm-view" class="view">
@@ -68,11 +65,11 @@
 	<br>
 	<table>
 		<div style="text-align:center;">
-			<button onclick="shoppingApp.showView('welcome')"> Home </button>
+			<button class = "btn btn-info" onclick="bimprovedApp.showView('welcome')"> Home </button>
 			<br>
 			<br>
-			<button onclick="shoppingApp.showView('improvementList')"> View List of Improvement Requests </button>
-			<button onclick="shoppingApp.showView('improvementPage')"> File Another Improvement </button>
+			<button class = "btn btn-info" onclick="bimprovedApp.showView('improvementList')"> View List of Improvement Requests </button>
+			<button class = "btn btn-info" onclick="bimprovedApp.showView('improvementPage')"> File Another Improvement </button>
 		</div>
     </table>
 
@@ -80,13 +77,13 @@
 	<div id="improvementPage-view" class="view">
 	<div class="input-group">
 				<span class="input-group-btn">
-                    <button id="btn btn-default" class="btn btn-default" onclick="shoppingApp.showView('improvementList')">
+                    <button  class="btn btn-info" onclick="bimprovedApp.showView('improvementList')">
                         View list of improvement requests
                     </button>
                 </span>	
 
                 <p align = "right" class="input-group-btn">
-                    <button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
+                    <button class="btn btn-info" onclick="bimprovedApp.showView('welcome')">
                         Home
                     </button>
                 </span>
@@ -97,17 +94,17 @@
 			<font size= "5"> Click the microphone then speak your problem! </font>
 			<br>
 			<br>
-			<img src="mic.png" alt="mic" width="50" height="50" onclick="shoppingApp.showView('welcome')"/></center>
+			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('welcome')"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">
 					<label for="Problem">Problem</label>
-					<textarea id="problem" type="text" class="form-control" rows= "3" placeholder="Type the problem here!" ></textarea>
+					<textarea id="problem"  type="text" class="form-control" rows= "3" placeholder="Type the problem here!" ></textarea>
 				</div>
 				<div class="form-group">
 					<label for="Where">Where</label>
 					<br>
-					<form name="where"><select id="where">
+					<form name="where" ><select id="where">
 								<option value="Hassenfeld">Hassenfeld</option>
 								<option value="Rabb">Rabb</option>
 								<option value="Sherman Dining Hall">Sherman Dining Hall</option>
@@ -118,7 +115,8 @@
 				<div class="form-group">
 					<label for="When">When</label>
 					<br>
-					<td> <input id = "when" type="date" id= "when">
+					<!--<input id = "when"  type="date" id= "when">-->
+                    <input id="when" type="text" placeholder= "m/dd/yyyy" onfocus="bimprovedApp.valiDate();" />
 				</div>
 				<div class="form-group">
 					<label for="Category">Category</label>
@@ -131,7 +129,7 @@
 							</select></form>
 				</div>
 					<center>
-					<button class="btn btn-info btn btn-lg" onclick ="shoppingApp.addtopic(where, problem, when, category)">
+					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category)">
 							Submit </button></td></center>
 	</div>
    
@@ -141,15 +139,15 @@
 
 	<div class="input-group">
 		    <span id= "refresh" class="input-group-btn" >
-			     <button id="refreshBtn" class="btn btn-default" onclick="shoppingApp.reloadModel()">
+			     <button id="refreshBtn" class="btn btn-info" onclick="bimprovedApp.reloadModel()">
 				     Refresh</button>
 			</span>
 			<center class="input-group-btn" >
-	   			<button class="btn btn-default" onclick="shoppingApp.showView('improvementPage')">
+	   			<button class="btn btn-info" onclick="bimprovedApp.showView('improvementPage')">
 					File an improvement </button>
 			</center>
 			<p align = "right" class="input-group-btn" >
-	   			<button class="btn btn-default" onclick="shoppingApp.showView('welcome')">
+	   			<button class="btn btn-info" onclick="bimprovedApp.showView('welcome')">
 					Home </button>
 			</p>
 	</div>
@@ -157,7 +155,7 @@
 	<br>
 		<div class = "scroll">
         <table class="table table-striped">
-            <thead>
+            <thead class= "tableHead">
                 <tr>
                     <th>Where</th>
                     <th>Problem</th>
@@ -178,23 +176,24 @@
 		<thead>
 			<tr>
 				<th><div class="checkbox-inline">
-					<label><input id="showCompleteCheckbox" type="checkbox" onclick="shoppingApp.refreshView()"> 
+					<label><input id="showCompleteCheckbox" type="checkbox" onclick="bimprovedApp.refreshView()"> 
 						Show Resolved Topics</label>
 				</div></th>
 				<th><div class="checkbox-inline">
-					<label><input id="problemFilter" type="text"  placeholder= "search by problem" onchange="shoppingApp.refreshView()"> 
+					<label><input id="problemFilter"  type="text"  placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
+					
 						</label></th>
 				</div>
 				<th><div class="checkbox-inline">
-					<label><input id="dateFilter" type="text"  placeholder= "search by date" onchange="shoppingApp.refreshView()"> 
+					<label><input id="dateFilter" type="text"  placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
 					</label>
 				</div></th>
 				<th><div class="checkbox-inline">
-					<label><input id="categoryFilter" type="text"  placeholder= "search by category" onchange="shoppingApp.refreshView()"> 
+					<label><input id="categoryFilter" type="text"  placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
 					</label>
 				</div></th>
 				<th><div class="checkbox-inline">
-					<label><input id="locationFilter" type="text"  placeholder= "search by location" onchange="shoppingApp.refreshView()"> 
+					<label><input id="locationFilter" type="text"  placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
 					</label>
 				</div></th>
 			</tr>
@@ -205,7 +204,7 @@
 </body>
 <script>
 // this is the code that actually starts the JavaScript application!!
-// when the document has been fully loaded, all the shoppingApp.start() method
-$(document).ready(shoppingApp.start());
+// when the document has been fully loaded, all the bimprovedApp.start() method
+$(document).ready(bimprovedApp.start());
 </script>
 </html>

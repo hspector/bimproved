@@ -1,9 +1,9 @@
 /**
- The shoppingView is responsible for updating all of the HTML
- It is called by the shoppingApp only and the only thing it calls is jQuery
+ The bimprovedView is responsible for updating all of the HTML
+ It is called by the bimprovedApp only and the only thing it calls is jQuery
 **/
 
-var shoppingView = (function($){
+var bimprovedView = (function($){
     
     function refreshView(myData){
         refreshTable(myData.topics);
@@ -42,14 +42,14 @@ var shoppingView = (function($){
 
         for(n=0; n<topics.length; n++){
             topic = topics[n]
-			resolved = topic.purchased || false;
+			resolved = topic.resolved || false;
             if (!resolved|| showComplete){
 				 if (dateFilter== "" || topic.when.match(dateFilter)){
 					if (probFilter== "" || topic.problem.match(probFilter)){
 						if (locFilter == "" || topic.where.match(locFilter)){
 							if (categoryFilter == "" || topic.category.match(categoryFilter)){
-						console.log("location is " + topic.where);
-						console.log("categoryFilter is " + categoryFilter );
+						//console.log("location is " + topic.where);
+						//console.log("categoryFilter is " + categoryFilter );
                         newtopics.push(topic);
 							}
 						}
@@ -68,13 +68,13 @@ var shoppingView = (function($){
                 var len = mytopics.length;
                 var filteredtopics = filtertopics(mytopics);
                 var sortedtopics = sorttopics(filteredtopics);
-                console.log("filteredtopics = "+ JSON.stringify(filteredtopics));
-                console.log("sortedtopics = "+JSON.stringify(sortedtopics));
+                //console.log("filteredtopics = "+ JSON.stringify(filteredtopics));
+                //console.log("sortedtopics = "+JSON.stringify(sortedtopics));
                 
                 for(var n=0; n<sortedtopics.length; n++){ 
                     var topic = sortedtopics[n];
                     rows = rows + topicToRow(topic);
-					console.log("rows = "+rows);
+					//console.log("rows = "+rows);
                 }
 
                 var topicTableBody = $("#topicTableBody").html(rows);
@@ -90,26 +90,22 @@ var shoppingView = (function($){
         "</td><td>"+
             topic.when+  
         "</td><td>"+topic.category+
-        "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='shoppingApp.purchasetopic(this)' "+purchased(topic)+ "> "+ 
-		"</td><td> <span class='glyphicon glyphicon-remove' sid='"+topic.id+"' onclick='shoppingApp.handleDeletetopic(this)'> "+
+        "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='bimprovedApp.resolvetopic(this)' "+resolved(topic)+ "> "+ 
+		"</td><td> <span class='glyphicon glyphicon-remove red'  sid='"+topic.id+"' onclick='bimprovedApp.handleDeletetopic(this)'> "+
         "</td></tr>";
         return row;
     }
         
-    function editted(topic) {
-        if(topic.edit) return "checked";
-        else return "";
-    }
     
-    function purchased(topic) {
-        if(topic.purchased) return "checked";
+    function resolved(topic) {
+        if(topic.resolved) return "checked";
         else return "";
     }
 	
-    shoppingView={
+    bimprovedView={
         refreshView: refreshView
     };
     
-    return(shoppingView);
+    return(bimprovedView);
     
 }(jQuery));
