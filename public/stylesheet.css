@@ -31,7 +31,9 @@ p#confirmation {
 	table-layout: center;
 
 }
-.inp{width:350px; padding-left:50px;}
+.inp{
+width:350px; padding-left:50px;
+}
 .border{
 	border-style:solid;
 	border-width: 1px;
