@@ -132,6 +132,10 @@ table#login{
 	width: 100%;
 	text-align: center;
 }
+.map{
+	width: 500px;
+    height: 400px;	
+}
 .scroll{
 	overflow-y:scroll;
 	overflow-x:hidden;

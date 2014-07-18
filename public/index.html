@@ -4,6 +4,20 @@
 	<title>Brandeis Improvements</title>	
 	<link rel="shortcut icon"  href="blogo.jpg">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+	
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script>
+      function initialize() {
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+          center: new google.maps.LatLng(400, -70.5463),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(map_canvas, map_options)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
@@ -22,6 +36,11 @@
 		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
         <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
     </div>
+	<div id="map-view" class="view">
+		<!--<center><div id ="map_canvas" class = "map"> </div></center>-->
+		<center><iframe width="1140" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;source=embed" style="color:#0000FF;text-align:left">Brandeis University</a> in a larger map</small></center>
+		
+	</div>
 	<div id="home-view" class="view">	
 			<div class= " row" >
 				<div class = "col-md-3 col-md-push-1 border1">
@@ -35,10 +54,14 @@
 						File an improvement 
 					</button></div>
 				<div class = "padding1">
-                    <button class = "btn btn-info" style="width:240px" onclick="bimprovedApp.showView('about')"> 
+                    <button class = "btn btn-info" style="width:240px" onclick="bimprovedApp.showView('map')"> 
 						About 
 					</button> 
-					<br><br><br><br>
+				</div>	
+				<div class = "padding1">
+                    <button class = "btn btn-info" style="width:240px" onclick="bimprovedApp.showView('map')"> 
+						Map 
+					</button> 
 				</div>
 				</div>
 				<div class = "col-md-8 col-md-offset-1 border2">
@@ -193,11 +216,7 @@
  								<option value="Ziv 127">Ziv 127</option>
  								<option value="Ziv 128">Ziv 128</option>   
  								<option value="Ziv 129">Ziv 129</option>  
-<<<<<<< HEAD
  								<option value="Ziv 130">Ziv 130</option>                                             
-=======
- 								<option value="Ziv 130">Ziv 130</option>                                          
->>>>>>> 6da8e9da6df172066e1997613e9182a8f517e410
 					</select></form>
 				</div>
 				<div class="form-group">
@@ -210,7 +229,6 @@
 					<label for="Category">Category</label>
 					<br>
 					<form name="category"><select id="category">
-<<<<<<< HEAD
 								<option value="Appliance Repair">Appliance Repair</option>
 								<option value="Classroom Problem">Classroom Problem</option>
 								<option value="Custodial">Custodial</option> 
@@ -224,21 +242,6 @@
 								<option value="Plumbing<">Plumbing</option> 
 								<option value="Windows">Windows</option>
 							</select></form>
-=======
-							<option value="Appliance Repair">Appliance Repair</option>
- 							<option value="Classroom Problem">Classroom Problem</option>
- 							<option value="Custodial">Custodial</option> 
- 							<option value="Doors-Locks-Keys">Doors-Locks-Keys</option>
- 							<option value="Dorm Furniture">Dorm Furniture</option> 
- 							<option value="Electrical">Electrical</option> 
- 							<option value="Fire and Safet">Fire and Safety</option> 
- 							<option value="General Repairs<">General Repairs</option>
- 							<option value="Heating-Air Conditioning">Heating-Air Conditioning</option>  
- 							<option value="Pest Control / Exterminating">Pest Control / Exterminating</option>
- 							<option value="Plumbing<">Plumbing</option> 
- 							<option value="Windows">Windows</option>
-						</select></form>
->>>>>>> 6da8e9da6df172066e1997613e9182a8f517e410
 				</div>
 					<center>
 					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category)">
