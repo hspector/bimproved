@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Brandeis Improvements</title>	
-	<link rel="shortcut icon"  href="b.png">
+	<link rel="shortcut icon"  href="blogo.jpg">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
@@ -19,11 +19,56 @@
 <body>
   <div class="container">
     <div class="page-header background">
-		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('welcome')"/>
-        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('welcome')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('welcome')"/></span> </h1>
+		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
+        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
     </div>
+	<div id="home-view" class="view">	
+			<div class= " row" >
+				<div class = "col-md-3 col-md-push-1 border1">
+				<div class = "padding1">
+					<button  class="btn btn-info" onclick="bimprovedApp.showView('improvementList')">
+                        View list of improvement requests
+                    </button>
+				</div>
+				<div class = "padding1">
+					<button class="btn btn-info" style="width:240px" onclick="bimprovedApp.showView('improvementPage')">
+						File an improvement 
+					</button></div>
+				<div class = "padding1">
+                    <button class = "btn btn-info" style="width:240px" onclick="bimprovedApp.showView('about')"> 
+						About 
+					</button> 
+					<br><br><br><br>
+				</div>
+				</div>
+				<div class = "col-md-8 col-md-offset-1 border2">
+					
+						<font size = "10"> Welcome to </font> <span><img src="logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
+						<font class = "lightBlue" size="4.5">
+							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
+						</font>						
+						<font class = "lightBlue" size="4.5">
+							"The brandeis campus is now the nicest campus in the world!"-CampusRatings.com<br><br>
+						</font>
+						<font class = "lightBlue" size="4.5">
+							"Due to this godsend there are no more rats in Sherman!"  -Heather<br><br>
+						</font>
+						<font class = "lightBlue" size="4.5">
+							"This app makes life worth living!"  -Student<br><br>
+						</font>
+						<font class = "lightBlue" size="4.5">
+							"The people who made this app are geniuses!"  -Student<br><br>
+						</font>
+						<font class = "lightBlue" size="4.5">
+							"I love fixing problems on campus and making it a better place to live!"  -Administrator
+						</font>
+					
 
-    <div id="welcome-view" class="view">
+				</div>
+			</div>
+   </div>
+   
+    <div id="login-view" class="view">
 	
    	<h2> 	<button class = "btn btn-info" onclick="bimprovedApp.showView('about')"> About </button> </h2><br><br>
 			<div style="text-align:center;">
@@ -43,11 +88,11 @@
 			</form>
 			</div>
 			<br><br>
-			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>-->
+			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>
    </div>
    
    <div id="about-view" class="view">
-	<button class = "btn btn-info" onclick="bimprovedApp.showView('welcome')"> Home </button>
+	<center><button class = "btn btn-info" onclick="bimprovedApp.showView('login')"> Login </button></center>
 	<p>
 		<br><font size="5">
 		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
@@ -57,17 +102,15 @@
 		</p></font>
 
    </div>
-    <div id="confirm-view" class="view">
+    <div id="confirm-view" class="view background1">
+		
 	<p id="confirmation">
-	<br>
+	<br><font size= "3">
 	You have succesfully submitted your improvement. Thank you!
-	</p>
+	</font></p>
 	<br>
 	<table>
-		<div style="text-align:center;">
-			<button class = "btn btn-info" onclick="bimprovedApp.showView('welcome')"> Home </button>
-			<br>
-			<br>
+		<div style="text-align:center;" >
 			<button class = "btn btn-info" onclick="bimprovedApp.showView('improvementList')"> View List of Improvement Requests </button>
 			<button class = "btn btn-info" onclick="bimprovedApp.showView('improvementPage')"> File Another Improvement </button>
 		</div>
@@ -83,8 +126,8 @@
                 </span>	
 
                 <p align = "right" class="input-group-btn">
-                    <button class="btn btn-info" onclick="bimprovedApp.showView('welcome')">
-                        Home
+                    <button class="btn btn-info" onclick="bimprovedApp.showView('login')">
+                        Logout
                     </button>
                 </span>
 	</div>	
@@ -94,7 +137,7 @@
 			<font size= "5"> Click the microphone then speak your problem! </font>
 			<br>
 			<br>
-			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('welcome')"/></center>
+			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('login')"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">
@@ -105,11 +148,52 @@
 					<label for="Where">Where</label>
 					<br>
 					<form name="where" ><select id="where">
-								<option value="Hassenfeld">Hassenfeld</option>
-								<option value="Rabb">Rabb</option>
-								<option value="Sherman Dining Hall">Sherman Dining Hall</option>
-								<option value="Usdan">Usdan</option>                   
-								<option value="Upper Sherman">Upper Sherman</option>S                                           
+								<option value="567 South Street">567 South Street</option>
+ 								<option value="Abraham Shapiro Academic Complex">Abraham Shapiro Academic Complex</option>
+ 								<option value="Bassine Science Building">Bassine Science Building</option>
+								<option value="Brown Social Science Center">Brown Social Science Center</option>
+								<option value="Cable Residence Hall - North">Cable Residence Hall - North</option>
+								<option value="Chapels Field">Chapels Field</option>
+								<option value="Deroy Residence Hall - Massell">Deroy Residence Hall - Massell</option>
+								<option value="Faculty Club">Faculty Club</option>
+								<option value="Farber Library">Farber Library</option>
+								<option value="Foster Mods">Foster Mods</option>
+								<option value="Gerstenzang Science Library">Gerstenzang Science Library</option>
+								<option value="Goldfarb Library">Goldfarb Library</option>
+								<option value="Gordon Residence Hall - North">Gordon Residence Hall - North</option>
+								<option value="Gosman Center / Ford Complex">Gosman Center / Ford Complex</option>
+ 								<option value="Hassenfeld Residence Hall - East">Hassenfeld - East</option>
+ 								<option value="Health Center">Health Center</option>
+ 								<option value="Intercultural Center">Intercultural Center</option>
+ 								<option value="Kutz Hall">Kutz Hall</option>
+ 								<option value="Mailman House">Mailman House</option>
+ 								<option value="Mandel Center">Mandel Center</option>
+ 								<option value="Olin-Sang">Olin-Sang</option>
+ 								<option value="Pomerantz Residence Hall - East">Pomerantz Residence Hall - East</option>
+ 								<option value="Reitman Residence Hall - North">Reitman Residence Hall - North</option>
+ 								<option value="Renfield Residence Hall - Massell">Renfield Residence Hall - Massell</option>
+ 								<option value="Rosenthal East Residence Hall">Rosenthal East Residence Hall</option>
+ 								<option value="Rosenthal North Residence Hall">Rosenthal North Residence Hall</option> 
+ 								<option value="Rosenthal North Residence Hall">Rosenthal North Residence Hall</option>
+ 								<option value="Scheffres Residence Hall - North">Scheffres Residence Hall - North</option>
+ 								<option value="Schwartz Hall">Schwartz Hall</option>   
+ 								<option value="Shapiro Admissions Center">Shapiro Admissions Building</option>   
+ 								<option value="Shapiro Campus Center">Shapiro Campus Center</option>
+ 								<option value="Shapiro Residence Hall - Massell">Shapiro Residence Hall - Massell</option>    
+  								<option value="Sherman Dining Hall">Sherman Dining Hall</option>                                
+ 								<option value="Slosberg Music Center">Slosberg Music Center</option> 
+ 								<option value="Spingold Theater">Spingold Theater</option> 
+ 								<option value="Stoneman">Stoneman</option> 
+ 								<option value="Usdan Student Center">Usdan Center</option>                      
+ 								<option value="Upper Sherman">Upper Sherman</option>
+ 								<option value="Usen Castle">Usdan Castle</option>   
+ 								<option value="Usen Residence Hall - Massell">Usen Residence Hall - Massell</option>
+ 								<option value="Village Residence Hall (A, B, C)">Village Residence Hall (A, B, C)</option>
+ 								<option value="Volen National Center">Volen National Center</option>
+ 								<option value="Ziv 127">Ziv 127</option>
+ 								<option value="Ziv 128">Ziv 128</option>   
+ 								<option value="Ziv 129">Ziv 129</option>  
+ 								<option value="Ziv 130">Ziv 130</option>                                             
 					</select></form>
 				</div>
 				<div class="form-group">
@@ -122,10 +206,18 @@
 					<label for="Category">Category</label>
 					<br>
 					<form name="category"><select id="category">
-								<option value="Broken Item">Broken Item</option>
-								<option value="Sanitary Issue">Sanitary Issue</option>
-								<option value="Dining Hall">Dining Hall</option>
-								<option value="Bathroom">Bathroom</option>
+								<option value="Appliance Repair">Appliance Repair</option>
+								<option value="Classroom Problem">Classroom Problem</option>
+								<option value="Custodial">Custodial</option> 
+								<option value="Doors-Locks-Keys">Doors-Locks-Keys</option>
+								<option value="Dorm Furniture">Dorm Furniture</option> 
+								<option value="Electrical">Electrical</option> 
+								<option value="Fire and Safet">Fire and Safety</option> 
+								<option value="General Repairs<">General Repairs</option>
+								<option value="Heating-Air Conditioning">Heating-Air Conditioning</option>  
+								<option value="Pest Control / Exterminating">Pest Control / Exterminating</option>
+								<option value="Plumbing<">Plumbing</option> 
+								<option value="Windows">Windows</option>
 							</select></form>
 				</div>
 					<center>
@@ -147,8 +239,8 @@
 					File an improvement </button>
 			</center>
 			<p align = "right" class="input-group-btn" >
-	   			<button class="btn btn-info" onclick="bimprovedApp.showView('welcome')">
-					Home </button>
+	   			<button class="btn btn-info" onclick="bimprovedApp.showView('login')">
+					Logout </button>
 			</p>
 	</div>
 	<br>

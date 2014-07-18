@@ -137,7 +137,7 @@ var bimprovedApp = (function($) {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
-        showView("welcome");
+        showView("login");
 
 
     }

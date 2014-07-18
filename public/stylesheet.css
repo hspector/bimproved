@@ -1,7 +1,8 @@
 body{
  background-image: url("lightBlue.jpg");
  background-size: 100%;
- font-family: 'Delius', cursive;
+ font-family: 'Delius';
+ color:black;
  
 }
 h1 {
@@ -16,6 +17,7 @@ h2 {
 	font-size: medium;
 	
 }
+
 .h3{
 	border-style:solid;
 	border-width: 1px;
@@ -32,7 +34,8 @@ p#confirmation {
 
 }
 .inp{
-width:350px; padding-left:50px;
+width:350px; 
+padding-left:50px;
 }
 .border{
 	border-style:solid;
@@ -42,17 +45,62 @@ width:350px; padding-left:50px;
 .blue{
     color:blue;
 }
+.lightBlue{
+    color: black;
+	font-weight:bold;
+	text-shadow:
+    -1px -1px 0 white,
+    0px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0px 1px 0 white,
+    1px 1px 0 white;
+}
 .tableHead{
     background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
-    background-image:         linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+    background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2aabd2', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     background-repeat: repeat-x;
     border-color: #28a4c9;
     color:white;
 }
+.padding{
+	padding-bottom:100%;
+}
+.padding1{
+	padding-bottom:20px;
+}
+.paddingLeft{
+	padding-left:100px;
+}
 .background{
 	background-color:AliceBlue;
+}
+.background1{
+	border-color:AliceBlue;
+	padding-bottom:50px;
+	border-style:solid;
+	border-width: 5px;
+}
+.border1{
+	border-color:AliceBlue;
+	padding-bottom:160px;
+	padding-top:20px;
+	padding-left:20px;
+	border-style:solid;
+	border-width: 5px;
+}
+.border2{
+	border-color:AliceBlue;
+	padding-bottom:10px;
+	padding-top:20px;
+	padding-left:20px;
+	border-style:solid;
+	border-width: 5px;
+}
+.wid{
+	width:200px;
 }
  
 .mic:hover{
@@ -61,7 +109,7 @@ width:350px; padding-left:50px;
 }
 .logoStart{
 	background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
-	background-image:         linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+	background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
 	padding-top:5px;
 	padding-left:5px;
 	padding-right:5px;
