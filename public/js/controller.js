@@ -73,7 +73,7 @@ var bimprovedApp = (function($) {
 		var element3 = document.getElementById("when");
 		var element4 = document.getElementById("category");
 		if(element2.value.length==0||element3.value.length==0){
-			alert("YOU NEED TO ENTER ALL THE FIELDS!!! Please fill out the boxes highlighted red");
+			alert("You need to enter all of the fields! Please fill out the boxes highlighted red");
 			if(element2.value.length==0){
 			element2.style.border= "solid red";
 			}
