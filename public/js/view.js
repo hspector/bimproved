@@ -33,6 +33,7 @@ var bimprovedView = (function($){
         var newtopics=[];
 		var probFilter = $.trim($("#problemFilter").val().toLowerCase());
 		var dateFilter = $.trim($("#dateFilter").val().toLowerCase());
+		var searchFilter = $.trim($("#searchFilter").val().toLowerCase());
 		var categoryFilter = $.trim($("#categoryFilter").val().toLowerCase());
 		var locFilter = $.trim($("#locationFilter").val().toLowerCase());
         var showComplete = $("#showCompleteCheckbox").prop("checked");
@@ -43,7 +44,9 @@ var bimprovedView = (function($){
         for(n=0; n<topics.length; n++){
             topic = topics[n]
 			resolved = topic.resolved || false;
+			//bimprovedApp.addMarker(bimprovedApp.getPoint(topic.where),topic.problem);
             if (!resolved|| showComplete){
+			  if(searchFilter == "" || (topic.when.match(searchFilter) || topic.problem.match(searchFilter))){
 				 if (dateFilter== "" || topic.when.match(dateFilter)){
 					if (probFilter== "" || topic.problem.match(probFilter)){
 						if (locFilter == "" || topic.where.match(locFilter)){
@@ -51,10 +54,12 @@ var bimprovedView = (function($){
 						//console.log("location is " + topic.where);
 						//console.log("categoryFilter is " + categoryFilter );
                         newtopics.push(topic);
+							
 							}
 						}
 					}
 				 }
+			  } 
             }
         }
         return newtopics;
