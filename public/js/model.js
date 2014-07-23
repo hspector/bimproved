@@ -39,6 +39,7 @@ bimprovedList.prototype.loadModel = function() {
         topics.map(function(x){x.id=x["_id"];});
 		console.log("topics="+topics);
         bimprovedView.refreshView(myList);
+		bimprovedView.refreshMapView(myList);
     });
 };
 

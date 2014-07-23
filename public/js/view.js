@@ -8,9 +8,11 @@ var bimprovedView = (function($){
     function refreshView(myData){
         refreshTable(myData.topics);
         updateTitle(myData.user);
-        
-        
+		      
     }
+	function refreshMapView(myData){
+		refreshMap(myData.topics);
+	}
     
     
     // updates the title with the user's name
@@ -40,11 +42,12 @@ var bimprovedView = (function($){
 		var e = document.getElementById("category");
         var strUser = e.options[e.selectedIndex].text;
 		var resolved;
-
+		//bimprovedApp.initialize();
         for(n=0; n<topics.length; n++){
             topic = topics[n]
 			resolved = topic.resolved || false;
-			//bimprovedApp.addMarker(bimprovedApp.getPoint(topic.where),topic.problem);
+			//var point = bimprovedApp.getPoint(topic.where);
+			//bimprovedApp.addMarker(point,topic.problem);
             if (!resolved|| showComplete){
 			  if(searchFilter == "" || (topic.when.match(searchFilter) || topic.problem.match(searchFilter))){
 				 if (dateFilter== "" || topic.when.match(dateFilter)){
@@ -64,6 +67,17 @@ var bimprovedView = (function($){
         }
         return newtopics;
     }
+	
+	function refreshMap(topics){
+		var n;
+		var topic;
+		bimprovedApp.initialize();
+        for(n=0; n<topics.length; n++){
+            topic = topics[n];
+			var point = bimprovedApp.getPoint(topic.where);
+			bimprovedApp.addMarker(point,topic.problem);
+		}	
+	}
     
     
     // redraw the table using the current model
@@ -108,7 +122,8 @@ var bimprovedView = (function($){
     }
 	
     bimprovedView={
-        refreshView: refreshView
+        refreshView: refreshView,
+		refreshMapView: refreshMapView
     };
     
     return(bimprovedView);

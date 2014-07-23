@@ -10,7 +10,8 @@
 
 var bimprovedApp = (function($) {
 
-
+	var blank = "%A0%A0";
+	var newblank = unescape(blank);
     // first create the model
     var myList = new bimprovedList();
     
@@ -108,10 +109,10 @@ var bimprovedApp = (function($) {
 			category: element4.value,
         });
 		bimprovedApp.showView('confirm');
-		var point = getPoint(element1.value);
+		//var point = getPoint(element1.value);
 		//var point = new GLatLng(42.365435,-71.258595);
-		var message = element2.value;
-		addMarker(point,message);
+		//var message = element2.value;
+		//addMarker(point,message);
         //element1.value="";
 		//element2.value="";
 		//element3.value="";
@@ -269,10 +270,15 @@ var bimprovedApp = (function($) {
     function refreshView(){
         bimprovedView.refreshView(myList);
     }
+	
+	function refreshMapView(){
+		bimprovedView.refreshMapView(myList);
+	}
 
     function reloadModel(){
         myList.loadModel();
         refreshView();
+		refreshMapView();
     }
     
     function initEventListeners(){
@@ -288,53 +294,61 @@ var bimprovedApp = (function($) {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
+		bimprovedView.refreshMapView(myList);
         showView("login");
-
-
+    }
+	function startAgain() {
+        myList.loadModel();
+        console.log("myList = " + JSON.stringify(myList));
+        bimprovedView.refreshView(myList);
+		bimprovedView.refreshMapView(myList);
+		showView("map");
     }
 	var map = null;
+	var points = [];
+	var messages = [];
+	
 	
 	 function initialize() {
 		map = new GMap2(document.getElementById("map_canvas"));
         map.setCenter(new GLatLng(42.365435,-71.258595), 1);
 		map.setZoom(20);
 		map.setMapType(G_SATELLITE_MAP);
+		//points = [];
+		//messages = [];
 		//addMarker();
     }
-	var points = [];
-	var messages = [];
-	function addMarker(point,message) {
+	function addMarker(point, message) {
 		var marker = new GMarker(point);
-		var message = isLocationFree(point,points,message,messages);
+		var newMessage = isLocationFree(point,points,message,messages);
 		messages.push(message);
 		points.push(point);
 		map.addOverlay(marker);
-		//for (var i = 0, l = messages.length-1; i < l; i++) {
-			//message += messages[i];
-		//}
-		//console.log("message is " + message);
 		GEvent.addListener(marker, "mouseover", function() {
-		marker.openInfoWindowHtml(message);
+		marker.openInfoWindowHtml(newMessage);
 		});
 	}
+	var newMessages = [];
 	function isLocationFree(point,points,message,messages) {
-		var newMessages =[];
+		var count = 1;
 		for (var i = 0, l = points.length; i < l; i++) {
-			//console.log("points is " + $.trim(points[i]) + " point is " + $.trim(point));
-			if ($.trim(points[i])==$.trim((point))) {
+			if ($.trim(points[i])==$.trim((point)) && $.trim(messages[i])!=$.trim((message))  ) {
+				count++;
 				console.log("im in the method");
-				message = (i+1) + ")" + message + "  " + (i+2) + ")" + messages[i];
-				console.log("message is " + message);
-				return message;
+				message+= newblank + count + ") " + messages[i];
 			}
 		}
-		//console.log("message1 is " + message);
+		
+		message = ("1) " + message + newblank);
+		newMessages.push(message);
 		return message;
 	}
 
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
         start: start,
+		startAgain: startAgain,
+		getPoint:getPoint,
 		initialize: initialize,
 		addMarker: addMarker,
 		valiDate: valiDate,
@@ -342,6 +356,7 @@ var bimprovedApp = (function($) {
 		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
         refreshView: refreshView,
+		refreshMapView: refreshMapView,
         resolvetopic: resolvetopic,
         reloadModel: reloadModel,
         showView: showView
