@@ -2,7 +2,8 @@ function recognize(){
     navigator.speechrecognizer.recognize(successCallback, failCallback, 5, "Cordova Speech Recognizer Plugin");
     
     function successCallback(results){
-        alert("Results: " + results);
+        var speechTranscript = document.getElementById('problem');
+        speechTranscript.value = results;
     }
 
     function failCallback(error){
