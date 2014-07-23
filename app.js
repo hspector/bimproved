@@ -87,8 +87,8 @@ app.delete('/model/:collection/:id', function(req, res) {
 });
 
 
-// listen on port 3000
-var port = 3000;
+// listen on port 7000
+var port = 7000;
 app.listen(port, function() {
     console.log("server is listening on port " + port);
 });
