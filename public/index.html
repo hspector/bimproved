@@ -4,20 +4,9 @@
 	<title>Brandeis Improvements</title>	
 	<link rel="shortcut icon"  href="blogo.jpg">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-	
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
-	<script>
-      function initialize() {
-        var map_canvas = document.getElementById('map_canvas');
-        var map_options = {
-          center: new google.maps.LatLng(400, -70.5463),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(map_canvas, map_options)
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxSPW5CJgpdgO_s4yyMovOaVh_KvvhSfpvagV18eOyDWu7VytS6Bi1CWxw"
+      type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
@@ -27,6 +16,8 @@
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
     <script src="js/controller.js"></script>
+    <script src="js/speech.js"></script>
+	<script src="cordova.js"></script>
     <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,11 +30,13 @@
 <body>
   <div class="container">
     <div class="page-header background">
-		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
-        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
-    </div>
+		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
+        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
+   </div>
 	<div id="map-view" class="view">
+
 		<!-- Not putting About in the menu because only have a button that says logout. So only having the about page when havn't logged in yet. -->
+
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
@@ -52,8 +45,16 @@
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
+
+		
 		<!--<center><div id ="map_canvas" class = "map"> </div></center>-->
+		<!--<div id = "map_canvas"
 		<center><iframe width="1140" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;source=embed" style="color:#0000FF;text-align:left">Brandeis University</a> in a larger map</small></center>
+		</div>-->
+		<body onload="bimprovedApp.initialize()" >
+		<div id="map_canvas" style="width: 1140px; height: 400px"></div>
+		</form>
+		</body>
 		
 	</div>
 	<div id="home-view" class="view">
@@ -69,23 +70,23 @@
 				
 				<div class = "border2" id="border2">
 					
-						<font size = "10"> Welcome to </font> <span><img src="logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
+						<font class = "whiteOutline" size="4.5">
 							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
 						</font>						
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size="4.5">
 							"The brandeis campus is now the nicest campus in the world!"-CampusRatings.com<br><br>
 						</font>
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size="4.5">
 							"Due to this godsend there are no more rats in Sherman!"  -Heather<br><br>
 						</font>
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size="4.5">
 							"This app makes life worth living!"  -Student<br><br>
 						</font>
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size="4.5">
 							"The people who made this app are geniuses!"  -Student<br><br>
 						</font>
-						<font class = "lightBlue" size="4.5">
+						<font class = "whiteOutline" size="4.5">
 							"I love fixing problems on campus and making it a better place to live!"  -Administrator
 						</font>
 						
@@ -160,7 +161,7 @@
 			<font size= "5"> Click the microphone then speak your problem! </font>
 			<br>
 			<br>
-			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('login')"/></center>
+			<img src="images/mic.png" class = "mic" alt="mic" width="50" height="50" onclick="recognize()"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">
@@ -170,6 +171,7 @@
 				<div class="form-group">
 					<label for="Where">Where</label>
 					<br>
+<<<<<<< HEAD
                     <form name="where">
                         <select id="where">
                             <option value="567 South Street">567 South Street</option>
@@ -220,6 +222,55 @@
                             <option value="Ziv 130">Ziv 130</option>
                         </select>
                     </form>
+=======
+					<form name="where" ><select id="where">
+								<option value="567 South Street">567 South Street</option>
+ 								<option value="Abraham Shapiro Academic Complex">Abraham Shapiro Academic Complex</option>
+ 								<option value="Bassine Science Building">Bassine Science Building</option>
+								<option value="Brown Social Science Center">Brown Social Science Center</option>
+								<option value="Cable Residence Hall - North">Cable Residence Hall - North</option>
+								<option value="Chapels Field">Chapels Field</option>
+								<option value="Deroy Residence Hall - Massell">Deroy Residence Hall - Massell</option>
+								<option value="Faculty Club">Faculty Club</option>
+								<option value="Farber Library">Farber Library</option>
+								<option value="Foster Mods">Foster Mods</option>
+								<option value="Gerstenzang Science Library">Gerstenzang Science Library</option>
+								<option value="Goldfarb Library">Goldfarb Library</option>
+								<option value="Gordon Residence Hall - North">Gordon Residence Hall - North</option>
+								<option value="Gosman Center / Ford Complex">Gosman Center / Ford Complex</option>
+ 								<option value="Hassenfeld Residence Hall - East">Hassenfeld - East</option>
+ 								<option value="Health Center">Health Center</option>
+ 								<option value="Intercultural Center">Intercultural Center</option>
+ 								<option value="Kutz Hall">Kutz Hall</option>
+ 								<option value="Mailman House">Mailman House</option>
+ 								<option value="Mandel Center">Mandel Center</option>
+ 								<option value="Olin-Sang">Olin-Sang</option>
+ 								<option value="Pomerantz Residence Hall - East">Pomerantz Residence Hall - East</option>
+ 								<option value="Reitman Residence Hall - North">Reitman Residence Hall - North</option>
+ 								<option value="Renfield Residence Hall - Massell">Renfield Residence Hall - Massell</option>
+ 								<option value="Rosenthal East Residence Hall">Rosenthal East Residence Hall</option>
+ 								<option value="Rosenthal North Residence Hall">Rosenthal North Residence Hall</option> 
+ 								<option value="Scheffres Residence Hall - North">Scheffres Residence Hall - North</option>
+ 								<option value="Schwartz Hall">Schwartz Hall</option>   
+ 								<option value="Shapiro Admissions Center">Shapiro Admissions Building</option>   
+ 								<option value="Shapiro Campus Center">Shapiro Campus Center</option>
+ 								<option value="Shapiro Residence Hall - Massell">Shapiro Residence Hall - Massell</option>    
+  								<option value="Sherman Dining Hall">Sherman Dining Hall</option>                                
+ 								<option value="Slosberg Music Center">Slosberg Music Center</option> 
+ 								<option value="Spingold Theater">Spingold Theater</option> 
+ 								<option value="Stoneman">Stoneman</option> 
+ 								<option value="Usdan Student Center">Usdan Center</option>                      
+ 								<option value="Upper Sherman">Upper Sherman</option>
+ 								<option value="Usen Castle">Usen Castle</option>   
+ 								<option value="Usen Residence Hall - Massell">Usen Residence Hall - Massell</option>
+ 								<option value="Village Residence Hall (A, B, C)">Village Residence Hall (A, B, C)</option>
+ 								<option value="Volen National Center">Volen National Center</option>
+ 								<option value="Ziv 127">Ziv 127</option>
+ 								<option value="Ziv 128">Ziv 128</option>   
+ 								<option value="Ziv 129">Ziv 129</option>  
+ 								<option value="Ziv 130">Ziv 130</option>                                             
+					</select></form>
+>>>>>>> origin/master
 				</div>
 				<div class="form-group">
 					<label for="When">When</label>
@@ -256,6 +307,7 @@
    <div id="improvementList-view" class="view">
    <div id='cssmenu'>
 			<ul>
+
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
@@ -286,11 +338,17 @@
        <table class= "table table-striped"> 
 		<thead>
 			<tr>
+				<div class="checkbox-inline">
+					<label><input id="searchFilter"  type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"> 
+					
+						</label>
+				</div>
 				<th><div class="checkbox-inline">
 					<label><input id="showCompleteCheckbox" type="checkbox" onclick="bimprovedApp.refreshView()"> 
 						Show Resolved Topics</label>
 				</div></th>
-				<th><div class="checkbox-inline">
+				<th>
+				<div class="checkbox-inline">
 					<label><input id="problemFilter"  type="text"  placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
 					
 						</label></th>
