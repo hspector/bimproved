@@ -16,6 +16,8 @@
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
     <script src="js/controller.js"></script>
+    <script src="js/speech.js"></script>
+	<script src="cordova.js"></script>
     <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +30,8 @@
 <body>
   <div class="container">
     <div class="page-header background">
-		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
-        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
+		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
+        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
    </div>
 	<div id="map-view" class="view">
 
@@ -68,7 +70,7 @@
 				
 				<div class = "border2" id="border2">
 					
-						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
+						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
 						<font class = "whiteOutline" size="4.5">
 							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
 						</font>						
@@ -159,7 +161,7 @@
 			<font size= "5"> Click the microphone then speak your problem! </font>
 			<br>
 			<br>
-			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('login')"/></center>
+			<img src="images/mic.png" class = "mic" alt="mic" width="50" height="50" onclick="recognize()"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">
