@@ -18,6 +18,16 @@ var bimprovedApp = (function($) {
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
     };
+
+    function resetPlaceholders() {
+    var problemid = document.getElementById("problem");
+    var whenid = document.getElementById("when");
+    problemid.value = "Type your problem here!";
+    whenid.value = "m/dd/yyyy";
+    document.getElementById("where").selectedIndex = 0;
+    document.getElementById("category").selectedIndex = 0;
+    console.log("resetPlaceholders function fired");
+    }
 	
 	 function valiDate() {
         var d = new Date();
@@ -145,7 +155,8 @@ var bimprovedApp = (function($) {
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
         start: start,
-		valiDate: valiDate,
+        valiDate: valiDate,
+        resetPlaceholders: resetPlaceholders,
         addtopic: addtopic,
 		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
