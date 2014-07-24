@@ -321,6 +321,8 @@ var bimprovedApp = (function($) {
         start: start,
 		getPoint:getPoint,
 		resetPlaceholders:resetPlaceholders,
+        valiDate: valiDate,
+        resetPlaceholders: resetPlaceholders,
 		initialize: initialize,
 		addMarker: addMarker,
 		valiDate: valiDate,
