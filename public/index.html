@@ -2,20 +2,21 @@
 <html lang=''>
 <head>
 	<title>Brandeis Improvements</title>	
-	<link rel="shortcut icon"  href="blogo.jpg">
+	<link rel="shortcut icon"  href="images/blogo.jpg">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
 	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxSPW5CJgpdgO_s4yyMovOaVh_KvvhSfpvagV18eOyDWu7VytS6Bi1CWxw"
       type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<script src="angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
     <script src="js/controller.js"></script>
+	<script src="js/speech.js"></script>
+	<script src="cordova.js"></script>
     <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +29,8 @@
 <body>
   <div class="container">
     <div class="page-header background">
-		<img src="whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
-        <h1> <span class= "logo"><img src="logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
+		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
+        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
    </div>
 	<div id="map-view" class="view">
 		<div id='cssmenu'>
@@ -40,13 +41,7 @@
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
-		<!-- Not putting About in the menu because only have a button that says logout. So only having the about page when havn't logged in yet. -->
-		
-		<!--<center><div id ="map_canvas" class = "map"> </div></center>-->
-		<!--<div id = "map_canvas"
-		<center><iframe width="1140" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?ie=UTF8&amp;msa=0&amp;msid=206046074200598148911.000477f71bfe66eb568f7&amp;t=h&amp;ll=42.368176,-71.256873&amp;spn=0.000156,0.000055&amp;source=embed" style="color:#0000FF;text-align:left">Brandeis University</a> in a larger map</small></center>
-		</div>-->
-		<body <!--onload="bimprovedApp.refreshMapView()">-->
+		<body>
 		<div id="map_canvas" style="width: 1140px; height: 400px"></div>
 		</form>
 		</body>
@@ -65,7 +60,7 @@
 				
 				<div class = "border2" id="border2">
 					
-						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
+						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
 						<font class = "whiteOutline" size="4.5">
 							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
 						</font>						
@@ -156,12 +151,12 @@
 			<font size= "5"> Click the microphone then speak your problem! </font>
 			<br>
 			<br>
-			<img src="mic.png" class = "mic" alt="mic" width="50" height="50" onclick="bimprovedApp.showView('login')"/></center>
+			<img src="images/mic.png" class = "mic" alt="mic" width="50" height="50" onclick="recognize()"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">
 					<label for="Problem">Problem</label>
-					<textarea id="problem"  type="text" class="form-control" rows= "3" placeholder="Type the problem here!" ></textarea>
+					<input id="problem"  type="text" class="form-control" placeholder="Type the problem here!" ></input>
 				</div>
 				<div class="form-group">
 					<label for="Where">Where</label>
@@ -239,7 +234,7 @@
 							</select></form>
 				</div>
 					<center>
-					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category)">
+					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category);bimprovedApp.resetPlaceholders()">
 							Submit </button></td></center>
 	</div>
    

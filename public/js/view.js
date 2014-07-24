@@ -8,12 +8,8 @@ var bimprovedView = (function($){
     function refreshView(myData){
         refreshTable(myData.topics);
         updateTitle(myData.user);
-		      
+		refreshMap(myData.topics);     
     }
-	function refreshMapView(myData){
-		refreshMap(myData.topics);
-	}
-    
     
     // updates the title with the user's name
     function updateTitle(user){
@@ -42,12 +38,9 @@ var bimprovedView = (function($){
 		var e = document.getElementById("category");
         var strUser = e.options[e.selectedIndex].text;
 		var resolved;
-		//bimprovedApp.initialize();
         for(n=0; n<topics.length; n++){
             topic = topics[n]
 			resolved = topic.resolved || false;
-			//var point = bimprovedApp.getPoint(topic.where);
-			//bimprovedApp.addMarker(point,topic.problem);
             if (!resolved|| showComplete){
 			  if(searchFilter == "" || (topic.when.match(searchFilter) || topic.problem.match(searchFilter))){
 				 if (dateFilter== "" || topic.when.match(dateFilter)){
@@ -71,11 +64,16 @@ var bimprovedView = (function($){
 	function refreshMap(topics){
 		var n;
 		var topic;
+		var resolved;
+		var showComplete = $("#showCompleteCheckbox").prop("checked");
 		bimprovedApp.initialize();
         for(n=0; n<topics.length; n++){
             topic = topics[n];
 			var point = bimprovedApp.getPoint(topic.where);
+			resolved = topic.resolved || false;
+            if (!resolved|| showComplete){
 			bimprovedApp.addMarker(point,topic.problem);
+			}
 		}	
 	}
     
@@ -123,7 +121,6 @@ var bimprovedView = (function($){
 	
     bimprovedView={
         refreshView: refreshView,
-		refreshMapView: refreshMapView
     };
     
     return(bimprovedView);

@@ -19,6 +19,15 @@ var bimprovedApp = (function($) {
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
     };
+	function resetPlaceholders() {
+		var problemid = document.getElementById("problem");
+		var whenid = document.getElementById("when");
+		problemid.value = "Type your problem here!";
+		whenid.value = "m/dd/yyyy";
+		document.getElementById("where").selectedIndex = 0;
+		document.getElementById("category").selectedIndex = 0;
+		console.log("resetPlaceholders function fired");
+    }
 	
 	 function valiDate() {
         var d = new Date();
@@ -29,34 +38,12 @@ var bimprovedApp = (function($) {
         console.log(complete_date);
         document.getElementById("when").value = complete_date;
     }
-	/*function addMarker() {
-	
-	var map = google.maps.Map(document.getElementById("map_canvas"));
-	var marker = map.Marker({
-		position: center,
-		title:"Hello World!"
-	});
-	console.log(marker.title);
-	// To add the marker to the map, call setMap();
-	marker.setMap(map);
-	}*/
-	
 	
     function handleDeletetopic(element) {
         console.log("deleting topic");
         console.log(" with id " + element.getAttribute("sid"));
-		$( "#clickme" ).click(function() {
-			$( "#book" ).hide( "slow", function() {
-			alert( "Animation complete." );
-			});
-        });
         myList.deleteElement(element.getAttribute("sid"));
 
-    }
-	function animateDeletetopic(element) {
-			$(element.getAttribute("sid")).hide( "slow", function() {
-			alert( "Animation complete." );
-			});
     }
 	function signIn(){
 			var element1 = $.trim($("#email").val().toLowerCase());
@@ -109,14 +96,6 @@ var bimprovedApp = (function($) {
 			category: element4.value,
         });
 		bimprovedApp.showView('confirm');
-		//var point = getPoint(element1.value);
-		//var point = new GLatLng(42.365435,-71.258595);
-		//var message = element2.value;
-		//addMarker(point,message);
-        //element1.value="";
-		//element2.value="";
-		//element3.value="";
-		//element4.value="";
     }
     
    
@@ -260,7 +239,7 @@ var bimprovedApp = (function($) {
     function resolvetopic(element) {
         var topicId = element.getAttribute("sid");
         var topic;
-        console.log("purchasing item "+topicId);
+        console.log("resolving item "+topicId);
         topic = myList.getElement(topicId);
         topic.resolved= !topic.resolved;
         refreshView();
@@ -271,14 +250,10 @@ var bimprovedApp = (function($) {
         bimprovedView.refreshView(myList);
     }
 	
-	function refreshMapView(){
-		bimprovedView.refreshMapView(myList);
-	}
 
     function reloadModel(){
         myList.loadModel();
         refreshView();
-		refreshMapView();
     }
     
     function initEventListeners(){
@@ -294,16 +269,10 @@ var bimprovedApp = (function($) {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
-		bimprovedView.refreshMapView(myList);
         showView("login");
     }
-	function startAgain() {
-        myList.loadModel();
-        console.log("myList = " + JSON.stringify(myList));
-        bimprovedView.refreshView(myList);
-		bimprovedView.refreshMapView(myList);
-		showView("map");
-    }
+	var timer = null;
+	
 	var map = null;
 	var points = [];
 	var messages = [];
@@ -311,44 +280,47 @@ var bimprovedApp = (function($) {
 	
 	 function initialize() {
 		map = new GMap2(document.getElementById("map_canvas"));
-        map.setCenter(new GLatLng(42.365435,-71.258595), 1);
-		map.setZoom(20);
+        map.setCenter(new GLatLng(42.365435,-71.258595), 15);
 		map.setMapType(G_SATELLITE_MAP);
-		//points = [];
-		//messages = [];
-		//addMarker();
     }
 	function addMarker(point, message) {
-		var marker = new GMarker(point);
-		var newMessage = isLocationFree(point,points,message,messages);
+		var newPoint = isLocationFree(point,points);
+		var marker = new GMarker(newPoint);
+		//messages.push(message);
+		points.push(newPoint);
 		messages.push(message);
-		points.push(point);
 		map.addOverlay(marker);
 		GEvent.addListener(marker, "mouseover", function() {
-		marker.openInfoWindowHtml(newMessage);
+		marker.openInfoWindowHtml(message);
+		});
+		//zooms map in on marker when clicked
+		GEvent.addListener(marker, "click", function() {
+			var lat = point.lat();
+			var lng = point.lng();
+			map.setCenter(new GLatLng(lat,lng), 20);
 		});
 	}
 	var newMessages = [];
 	function isLocationFree(point,points,message,messages) {
 		var count = 1;
 		for (var i = 0, l = points.length; i < l; i++) {
-			if ($.trim(points[i])==$.trim((point)) && $.trim(messages[i])!=$.trim((message))  ) {
-				count++;
-				console.log("im in the method");
-				message+= newblank + count + ") " + messages[i];
+			var min = .999999;
+			var max = 1.000001;
+			if ($.trim(points[i])==$.trim((point))) {
+				  var lat = point.lat() * (Math.random() * (max - min) + min);
+                  var lng = point.lng() * (Math.random() * (max - min) + min);
+				  point = new GLatLng(lat,lng);
+				
 			}
 		}
-		
-		message = ("1) " + message + newblank);
-		newMessages.push(message);
-		return message;
+		return point;
 	}
 
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
         start: start,
-		startAgain: startAgain,
 		getPoint:getPoint,
+		resetPlaceholders:resetPlaceholders,
 		initialize: initialize,
 		addMarker: addMarker,
 		valiDate: valiDate,
@@ -356,7 +328,6 @@ var bimprovedApp = (function($) {
 		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
         refreshView: refreshView,
-		refreshMapView: refreshMapView,
         resolvetopic: resolvetopic,
         reloadModel: reloadModel,
         showView: showView
