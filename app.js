@@ -36,6 +36,7 @@ app.use(function(req, res, next) {
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {
     var collection = db.get(req.params.collection);
+    console.log("collection = "+collection);
     collection.find({_id: req.params.id}, {}, function(e, docs) {
         console.log(JSON.stringify(docs));
         if (docs.length>0)
@@ -49,6 +50,7 @@ app.get('/model/:collection/:id', function(req, res) {
 // get all topics from the model
 app.get('/model/:collection', function(req, res) {
     var collection = db.get(req.params.collection);
+    console.log("collection = "+collection);
     collection.find({}, {}, function(e, docs) {
         console.log(JSON.stringify(docs));
         res.json(200, docs);
