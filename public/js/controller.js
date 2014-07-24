@@ -345,14 +345,11 @@ var bimprovedApp = (function($) {
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
         start: start,
-<<<<<<< HEAD
         valiDate: valiDate,
         resetPlaceholders: resetPlaceholders,
-=======
 		initialize: initialize,
 		addMarker: addMarker,
 		valiDate: valiDate,
->>>>>>> origin/master
         addtopic: addtopic,
 		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
