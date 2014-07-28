@@ -118,7 +118,7 @@ app.use(passport.session());
 
 
 app.get('/auth/google/:return?', passport.authenticate('google', {
-    successRedirect: '/',
+    successRedirect: '/#improvementList',
     failureRedirect: '/login'
 }));
 
@@ -194,11 +194,24 @@ app.put('/model/:collection/:id', function(req, res) {
 // add new topic to the model
 // in this example we show how to use javascript promises
 // to simply asynchronous calls
+app.post('/model/bimproved', function(req, res) {
+    console.log("post to bimproved ... " + JSON.stringify(req.body));
+    var collection = db.get(req.params.collection);
+    var promise = collection.insert(req.body);
+    promise.success(function(doc){
+        db.get("userProfile").insert(
+            {openID:req.user.openID,
+             improvement:doc});
+        res.json(200,doc)});
+    promise.error(function(error){res.json(404,error)});
+});
+
 app.post('/model/:collection', function(req, res) {
     console.log("post ... " + JSON.stringify(req.body));
     var collection = db.get(req.params.collection);
     var promise = collection.insert(req.body);
-    promise.success(function(doc){res.json(200,doc)});
+    promise.success(function(doc){
+        res.json(200,doc)});
     promise.error(function(error){res.json(404,error)});
 });
 
