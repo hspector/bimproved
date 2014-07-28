@@ -137,6 +137,9 @@ table#login{
 	width: 100%;
 	text-align: center;
 }
+table#bottomFilters{
+  width: 100%;
+}
 .map{
 	width: 1140px;
     height: 400px;	
@@ -182,7 +185,7 @@ table#login{
   width: auto;
   color: #ffffff;
   /*This width makes the menu centered, but stops it from adjusting when the window gets smaller. */
-  width: 50.5em;
+  width: 49em;
   margin: auto;
 }
 #cssmenu.align-right ul li {

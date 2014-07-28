@@ -259,6 +259,7 @@
 	<br>
 	<br>
 		<div class = "scroll">
+		<br>
         <table class="table table-striped">
             <thead class= "tableHead">
                 <tr>
@@ -278,6 +279,7 @@
 		<br>
 		<br>
 		<br>
+<<<<<<< HEAD
        <table id="bottomFilters">
  			<tr>
  				<th><div>
@@ -305,6 +307,41 @@
  				<th><div>
 					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
   					</label>
+=======
+		<table id="bottomFilters">
+			<tr>
+				<th><div>
+					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()"> Show Resolved Topics</label>
+				</div></th>
+				<th><div>
+					<label><input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"></label>
+				</div></th>
+				<th><div>
+					<label> <input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">Advanced Search</input></label>
+				</div></th>
+			</tr>
+		</table>
+       <table class="table table-striped" id="advSearch" style="display:none;"> 
+		<thead>
+			<tr>
+				<th><div class="checkbox-inline">
+					<label><input id="locationFilter" type="text"  class="form-control" placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
+					</label>
+				</div></th>
+				<th>
+				<div class="checkbox-inline">
+					<label><input id="problemFilter"  type="text"  class="form-control" placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
+					
+						</label></th>
+				</div>
+				<th><div class="checkbox-inline">
+					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
+					</label>
+				</div></th>
+				<th><div class="checkbox-inline">
+					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
+					</label>
+>>>>>>> f89fd98c8aa48f23a176c197db1e868042316158
 				</div></th>
 				<th><div>
 					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 

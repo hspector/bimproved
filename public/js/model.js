@@ -12,7 +12,12 @@ function bimprovedList() {
 
 };
 
+<<<<<<< HEAD
 
+=======
+//bimprovedList.prototype.server = "http://leiner.cs-i.brandeis.edu:7000"; // this is for production
+bimprovedList.prototype.server = ""; // this is for testing locally
+>>>>>>> f89fd98c8aa48f23a176c197db1e868042316158
 
 // we use the locally cached model to lookup elements...
 bimprovedList.prototype.getElement = function(id){
