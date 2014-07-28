@@ -10,7 +10,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Delius' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
@@ -36,13 +36,13 @@
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
 		<body>
-		<div id="map_canvas" style="width: 1140px; height: 400px"></div>
+		<center><div id="map_canvas" style="width: 84vw; height: 60vh"></div></center>
 		</form>
 		</body>
 		
@@ -51,7 +51,7 @@
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -125,7 +125,7 @@
 	<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -137,10 +137,11 @@
 	<br>
    </div>
 	<div id="improvementPage-view" class="view">
+		
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -210,6 +211,10 @@
 					</select></form>
 				</div>
 				<div class="form-group">
+					<label for="Room">Room # (If applicable)</label>
+					<input id="room"  type="text" class="form-control" placeholder="N/A" ></input>
+				</div>
+				<div class="form-group">
 					<label for="When">When</label>
 					<br>
 					<!--<input id = "when"  type="date" id= "when">-->
@@ -234,8 +239,10 @@
 							</select></form>
 				</div>
 					<center>
-					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category);bimprovedApp.resetPlaceholders()">
-							Submit </button></td></center>
+					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, room, problem, when, category)">
+							Submit </button></td></center> 
+				
+						
 	</div>
    
    
@@ -244,7 +251,7 @@
 			<ul>
 				
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -256,6 +263,7 @@
             <thead class= "tableHead">
                 <tr>
                     <th>Where</th>
+					<th>Room#</th>
                     <th>Problem</th>
                     <th>When</th>
 					<th>Category</th>
@@ -270,39 +278,40 @@
 		<br>
 		<br>
 		<br>
-       <table class= "table table-striped"> 
-		<thead>
-			<tr>
-				<div class="checkbox-inline">
-					<label><input id="searchFilter"  type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"> 
-					
-						</label>
-				</div>
-				<th><div class="checkbox-inline">
-					<label><input id="showCompleteCheckbox" type="checkbox" onclick="bimprovedApp.refreshView()"> 
-						Show Resolved Topics</label>
+       <table id="bottomFilters">
+ 			<tr>
+ 				<th><div>
+ 					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()"> Show Resolved Topics</label>
+ 				</div></th>
+ 				<th><div>
+ 					<label><input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"></label>
+ 				</div></th>
+ 				<th><div>
+ 					<label> <input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">Advanced Search</input></label>
+ 				</div></th>
+ 			</tr>
+ 		</table>
+		<table class="table table-striped" id="advSearch" style="display:none;"> 
+  		<thead>
+  			<tr>
+				<th><div>
+					<label><input id="locationFilter" type="text"  class="form-control" placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
+ 					</label>
 				</div></th>
-				<th>
-				<div class="checkbox-inline">
-					<label><input id="problemFilter"  type="text"  placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
-					
-						</label></th>
-				</div>
-				<th><div class="checkbox-inline">
-					<label><input id="dateFilter" type="text"  placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
+ 				<th><div>
+					<label><input id="problemFilter"  type="text"  class="form-control" placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
 					</label>
 				</div></th>
-				<th><div class="checkbox-inline">
-					<label><input id="categoryFilter" type="text"  placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
-					</label>
+ 				<th><div>
+					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
+  					</label>
 				</div></th>
-				<th><div class="checkbox-inline">
-					<label><input id="locationFilter" type="text"  placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
-					</label>
-				</div></th>
-			</tr>
-		</thead>
-	</table>	
+				<th><div>
+					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
+  					</label>
+  				</div></th>
+  			</tr>
+
     </div>
 	</div>
 </body>

@@ -12,7 +12,7 @@ function bimprovedList() {
 
 };
 
-bimprovedList.prototype.server = "http://leiner.cs-i.brandeis.edu:7000";
+
 
 // we use the locally cached model to lookup elements...
 bimprovedList.prototype.getElement = function(id){
@@ -33,7 +33,7 @@ bimprovedList.prototype.loadModel = function() {
     // send request to the server for the topics in the list
     $.ajax({
         type: "GET",
-        url: myList.server+"/model/bimproved",
+        url: "/model/bimproved",
     }).done(function(topics) {
         myList.topics = topics;
         topics.map(function(x){x.id=x["_id"];});
@@ -42,12 +42,13 @@ bimprovedList.prototype.loadModel = function() {
     });
 };
 
+
 bimprovedList.prototype.addElement = function(newtopic){
     console.log("sending "+JSON.stringify(newtopic));
     var myList = this;
     $.ajax({
         type: "POST",
-        url: myList.server+"/model/bimproved",
+        url: "/model/bimproved",
         data: JSON.stringify(newtopic),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -60,7 +61,7 @@ bimprovedList.prototype.updateElement = function(id,newtopic){
     var myList = this;
     $.ajax({
         type: "PUT",
-        url: myList.server+"/model/bimproved/"+id,
+        url: "/model/bimproved/"+id,
         data: JSON.stringify(newtopic),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -73,8 +74,11 @@ bimprovedList.prototype.deleteElement = function(id){
     var myList = this;
     $.ajax({
         type: "DELETE",
-        url: myList.server+"/model/bimproved/"+id,
+        url: "/model/bimproved/"+id,
     }).done(function(topics) {
         myList.loadModel();
     });
 }
+
+
+    

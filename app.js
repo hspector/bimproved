@@ -12,14 +12,16 @@
 var express = require('express');
 var bodyParser = require('body-parser'); // this allows us to pass JSON values to the server (see app.put below)
 var app = express();
-
 var monk = require('monk');
 var db = monk('localhost:27017/bimproved');
-
+//var cookieParser = require('cookie-parser');
+//var session = require('express-sessions');
+//var redisClient = require('redis').createClient();
+//var RedisStore = require('connect-redis')(session);
 
 // serve static content from the public folder 
 app.use("/", express.static(__dirname + '/public'));
-
+//app.use(session({secret: 'hey'}));
 
 // parse the bodies of all other queries as json
 app.use(bodyParser.json());
@@ -87,7 +89,7 @@ app.delete('/model/:collection/:id', function(req, res) {
 });
 
 
-// listen on port 7000
+// listen on port 3000
 var port = 7000;
 app.listen(port, function() {
     console.log("server is listening on port " + port);
