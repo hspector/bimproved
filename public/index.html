@@ -36,13 +36,13 @@
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
 		<body>
-		<div id="map_canvas" style="width: 1140px; height: 400px"></div>
+		<center><div id="map_canvas" style="width: 84vw; height: 60vh"></div></center>
 		</form>
 		</body>
 		
@@ -51,7 +51,7 @@
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -125,7 +125,7 @@
 	<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -137,10 +137,11 @@
 	<br>
    </div>
 	<div id="improvementPage-view" class="view">
+		
 		<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -210,6 +211,10 @@
 					</select></form>
 				</div>
 				<div class="form-group">
+					<label for="Room">Room # (If applicable)</label>
+					<input id="room"  type="text" class="form-control" placeholder="N/A" ></input>
+				</div>
+				<div class="form-group">
 					<label for="When">When</label>
 					<br>
 					<!--<input id = "when"  type="date" id= "when">-->
@@ -234,16 +239,16 @@
 							</select></form>
 				</div>
 					<center>
-					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category);bimprovedApp.resetPlaceholders()"> Submit </button></td></center>
+					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, room, problem, when, category)">
+					Submit </button></td></center> 
 				</div>
-   
    
    <div id="improvementList-view" class="view">
    <div id='cssmenu'>
 			<ul>
 				
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
@@ -258,6 +263,7 @@
             <thead class= "tableHead">
                 <tr>
                     <th>Where</th>
+					<th>Room#</th>
                     <th>Problem</th>
                     <th>When</th>
 					<th>Category</th>
@@ -269,7 +275,6 @@
             </tbody>
         </table>
 	</div>
-		<br>
 		<br>
 		<br>
 		<table id="bottomFilters">

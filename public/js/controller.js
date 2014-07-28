@@ -20,15 +20,28 @@ var bimprovedApp = (function($) {
       $('.view').hide().filter('#' + selected + '-view').show();
     };
 	function resetPlaceholders() {
-		var problemid = document.getElementById("problem");
-		var whenid = document.getElementById("when");
-		problemid.value = "Type your problem here!";
-		whenid.value = "m/dd/yyyy";
+		console.log("reset method called");
+		var element1 = document.getElementById("problem");
+		var element2 = document.getElementById("when");
+		var element3 = document.getElementById("room");
+		element1.value="";
+		element2.value = "";
+		element3.value = "";
+		element1.placeholder = "Type the problem here!";
+		element2.placeholder = "m/dd/yyyy";
+		element3.placeholder = "N/A";
 		document.getElementById("where").selectedIndex = 0;
 		document.getElementById("category").selectedIndex = 0;
-		console.log("resetPlaceholders function fired");
     }
-	
+	 function advancedSearch() {
+    	if (document.getElementById('advSearchCB').checked) {
+    		document.getElementById('advSearch').style.display = 'table';
+    		document.getElementById('searchFilter').style.display = 'none';
+    	} else {
+    		document.getElementById('advSearch').style.display = 'none';
+    		document.getElementById('searchFilter').style.display = 'table';
+    	}
+    }
 	 function valiDate() {
         var d = new Date();
         var curr_date = d.getDate();
@@ -65,25 +78,30 @@ var bimprovedApp = (function($) {
 				alert("Either your password or email is wrong. Please try again with your Brandeis Unet ID");
 			
 	}
-    function addtopic(element1, element2, element3, element4) {
-
+	
+    function addtopic(element1, element2, element3, element4, element5) {
 		var element1 = document.getElementById("where");
-		var element2 = document.getElementById("problem");
-		var element3 = document.getElementById("when");
-		var element4 = document.getElementById("category");
-		if(element2.value.length==0||element3.value.length==0){
-			alert("You need to enter all of the fields! Please fill out the boxes highlighted red");
-			if(element2.value.length==0){
-			element2.style.border= "solid red";
+		var element2 = document.getElementById("room");
+		var element3 = document.getElementById("problem");
+		var element4 = document.getElementById("when");
+		var element5 = document.getElementById("category");
+		
+		if(element2.value.length==0){
+			element2.value= element2.placeholder;
 			}
+		if(element3.value.length==0||element4.value.length==0){
+			alert("You need to enter all of the fields! Please fill out the boxes highlighted red");
 			if(element3.value.length==0){
 			element3.style.border= "solid red";
 			}
-			if(element2.value.length!=0){
-			element2.style.border= "";
+			if(element4.value.length==0){
+			element4.value = "solid red";
 			}
 			if(element3.value.length!=0){
 			element3.style.border= "";
+			}
+			if(element4.value.length!=0){
+			element4.style.border= "";
 			}
 			return;
 		}
@@ -91,11 +109,15 @@ var bimprovedApp = (function($) {
         console.log("new topic " + element2.value);
         myList.addElement({
             where: element1.value,
-            problem: element2.value,
-            when: element3.value,
-			category: element4.value,
+			room: element2.value,
+            problem: element3.value,
+            when: element4.value,
+			category: element5.value,
         });
 		bimprovedApp.showView('confirm');
+		element2.style.border= "";
+		element3.style.border= "";
+		element3.style.border= "";
     }
     
    
@@ -292,10 +314,10 @@ var bimprovedApp = (function($) {
         map.setCenter(new GLatLng(42.365435,-71.258595), 15);
 		map.setMapType(G_SATELLITE_MAP);
     }
+	
 	function addMarker(point, message) {
 		var newPoint = isLocationFree(point,points);
 		var marker = new GMarker(newPoint);
-		//messages.push(message);
 		points.push(newPoint);
 		messages.push(message);
 		map.addOverlay(marker);
@@ -308,9 +330,14 @@ var bimprovedApp = (function($) {
 			var lng = point.lng();
 			map.setCenter(new GLatLng(lat,lng), 20);
 		});
+		GEvent.addListener(marker, "dblclick", function() {
+			var lat = point.lat();
+			var lng = point.lng();
+			map.setCenter(new GLatLng(lat,lng), 16);
+		});
 	}
 	var newMessages = [];
-	function isLocationFree(point,points,message,messages) {
+	function isLocationFree(point,points) {
 		var count = 1;
 		for (var i = 0, l = points.length; i < l; i++) {
 			var min = .999999;

@@ -70,6 +70,7 @@ var bimprovedView = (function($){
         for(n=0; n<topics.length; n++){
             topic = topics[n];
 			var point = bimprovedApp.getPoint(topic.where);
+			//console.log("topic.where is " + topic.where);
 			resolved = topic.resolved || false;
             if (!resolved|| showComplete){
 			bimprovedApp.addMarker(point,topic.problem);
@@ -102,6 +103,8 @@ var bimprovedView = (function($){
     function topicToRow(topic){
         var row = 
         "<tr><td>"+topic.where+
+		"</td><td>"+ 
+            topic.room+ 
         "</td><td>"+ 
             topic.problem+ 
         "</td><td>"+
