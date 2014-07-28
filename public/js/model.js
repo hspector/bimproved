@@ -12,7 +12,8 @@ function bimprovedList() {
 
 };
 
-bimprovedList.prototype.server = "http://leiner.cs-i.brandeis.edu:7000";
+//bimprovedList.prototype.server = "http://leiner.cs-i.brandeis.edu:7000";
+bimprovedList.prototype.server = "";
 
 // we use the locally cached model to lookup elements...
 bimprovedList.prototype.getElement = function(id){
