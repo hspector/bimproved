@@ -244,6 +244,15 @@ var bimprovedApp = (function($) {
         topic.resolved= !topic.resolved;
         refreshView();
     }
+   function advancedSearch() {
+   	if (document.getElementById('advSearchCB').checked) {
+   		document.getElementById('advSearch').style.display = 'table';
+   		document.getElementById('searchFilter').style.display = 'none';
+   	} else {
+   		document.getElementById('advSearch').style.display = 'none';
+   		document.getElementById('searchFilter').style.display = 'table';
+   	}
+   }
 
 
     function refreshView(){
@@ -325,12 +334,12 @@ var bimprovedApp = (function($) {
         resetPlaceholders: resetPlaceholders,
 		initialize: initialize,
 		addMarker: addMarker,
-		valiDate: valiDate,
         addtopic: addtopic,
 		signIn: signIn,
         handleDeletetopic: handleDeletetopic,
         refreshView: refreshView,
         resolvetopic: resolvetopic,
+        advancedSearch: advancedSearch,
         reloadModel: reloadModel,
         showView: showView
     }
