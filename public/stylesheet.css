@@ -137,9 +137,16 @@ table#login{
 table#bottomFilters{
   width: 100%;
 }
+div#searchBox{
+  width: 50vw;
+  margin: auto;
+}
+table#advSearch{
+  width: 50vw;
+}
 .map{
 	width: 1140px;
-    height: 400px;	
+  height: 400px;	
 }
 .scroll{
 	overflow-y:scroll;

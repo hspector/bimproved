@@ -234,9 +234,8 @@
 							</select></form>
 				</div>
 					<center>
-					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category);bimprovedApp.resetPlaceholders()">
-							Submit </button></td></center>
-	</div>
+					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, problem, when, category);bimprovedApp.resetPlaceholders()"> Submit </button></td></center>
+				</div>
    
    
    <div id="improvementList-view" class="view">
@@ -249,8 +248,10 @@
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
-	<br>
-	<br>
+		<br>
+		<div class="form-group" id="searchBox">
+			<input id="searchFilter" class="form-control" type="text"  placeholder= "Search" onchange="bimprovedApp.refreshView()"></input>
+		</div>
 		<div class = "scroll">
 		<br>
         <table class="table table-striped">
@@ -274,40 +275,34 @@
 		<table id="bottomFilters">
 			<tr>
 				<th><div>
-					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()"> Show Resolved Topics</label>
+					<input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">&nbsp&nbspAdvanced Search</input>
 				</div></th>
 				<th><div>
-					<label><input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"></label>
-				</div></th>
-				<th><div>
-					<label> <input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">Advanced Search</input></label>
+					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()">&nbsp&nbspShow Resolved Topics</label>
 				</div></th>
 			</tr>
 		</table>
-       <table class="table table-striped" id="advSearch" style="display:none;"> 
+		<br>
+       <table class="table" id="advSearch" style="display:none;"> 
 		<thead>
 			<tr>
-				<th><div class="checkbox-inline">
-					<label><input id="locationFilter" type="text"  class="form-control" placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
-					</label>
+				<th><div class="form-group">
+					<input id="locationFilter" type="text"  class="form-control" placeholder= "Search by location" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
-				<th>
-				<div class="checkbox-inline">
-					<label><input id="problemFilter"  type="text"  class="form-control" placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
-					
-						</label></th>
-				</div>
-				<th><div class="checkbox-inline">
-					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
-					</label>
+				<th><div class='form-group'>
+					<input id="problemFilter"  type="text"  class="form-control" placeholder= "Search by problem" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
-				<th><div class="checkbox-inline">
-					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
-					</label>
+			</tr><tr>
+				<th><div class="form-group">
+					<input id="dateFilter" type="text"  class="form-control" placeholder= "Search by date" onchange="bimprovedApp.refreshView()"> 
+				</div></th>
+				<th><div class="form-group">
+					<input id="categoryFilter" type="text"  class="form-control" placeholder= "Search by category" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
 			</tr>
 		</thead>
-	</table>	
+	</table>
+	<br>	
     </div>
 	</div>
 </body>
