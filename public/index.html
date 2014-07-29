@@ -38,7 +38,7 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
 		<body>
@@ -53,7 +53,7 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
 			<p>
@@ -73,7 +73,7 @@
 					
 						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span>
 						<font class = "whiteOutline" size="4.5"><center> Please <a href="/auth/google">Click Here</a> to login using your gmail or Brandeis login
-and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Access B-Improved! </button></center></font>
+and then <button class = "btn btn-info" onclick= "bimprovedApp.showView('improvementList')"> Access B-Improved! </button></center></font>
 						<br>
 						<font class = "whiteOutline" size="4.5">
 							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
@@ -105,29 +105,6 @@ and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn
         Click <a href="/auth/logout">here to logout</a>
 
    </div>
-
-    <div id="old-login-view" class="view">
-	
-   	<h2> 	<button class = "btn btn-info" onclick="bimprovedApp.showView('about')"> About </button> </h2><br><br>
-			<div style="text-align:center;">
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<label for="email" class="col-sm-4 control-label">Email</label>
-						<div class="col-sm-8 inp">
-							<input type="email" size="35" class="form-control" id="email" placeholder="Email">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="password" class="col-sm-4 control-label">Password</label>
-						<div class="col-sm-8 inp">
-							<input type="password" class="form-control" id="password" placeholder ="Password" onchange= "bimprovedApp.signIn()" >
-						</div>
-				</div>
-			</form>
-			</div>
-			<br><br>
-			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>
-   </div>
    
     <div id="confirm-view" class="view background1">
 	<div id='cssmenu'>
@@ -135,7 +112,7 @@ and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
 	<p id="confirmation">
@@ -151,7 +128,7 @@ and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
 			<br>
@@ -258,7 +235,7 @@ and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
 		<br>

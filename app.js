@@ -148,6 +148,10 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
+/* app.get('/auth/login'), function(req,res) {
+    req.login();
+    res.redirect('/improvementPage')
+} */ //I tried this. It doesn't seem to work. ugh. - Heather.
 
 // this returns the user info
 app.get('/api/user', ensureAuthenticated, function(req, res) {
