@@ -261,11 +261,19 @@ var bimprovedApp = (function($) {
     function resolvetopic(element) {
         var topicId = element.getAttribute("sid");
         var topic;
+ 
         console.log("resolving item "+topicId);
-        topic = myList.getElement(topicId);
-        topic.resolved= !topic.resolved;
+        if (isAdmin()){
+            topic = myList.getElement(topicId);
+            topic.resolved= !topic.resolved;
+        }
         refreshView();
     }
+    
+    function isAdmin(){
+        return(myList.user.profile.emails[0].value == "tjhickey@brandeis.edu");
+    }
+    
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
    		document.getElementById('advSearch').style.display = 'table';
@@ -354,6 +362,7 @@ var bimprovedApp = (function($) {
 
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
+        myList:myList,
         start: start,
 		getPoint:getPoint,
 		resetPlaceholders:resetPlaceholders,

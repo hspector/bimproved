@@ -110,6 +110,8 @@ var bimprovedView = (function($){
         "</td><td>"+
             topic.when+  
         "</td><td>"+topic.category+
+        "</td><td>"+
+            topic.improver+
         "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='bimprovedApp.resolvetopic(this)' "+resolved(topic)+ "> "+ 
 		"</td><td> <span class='glyphicon glyphicon-remove red'  sid='"+topic.id+"' onclick='bimprovedApp.handleDeletetopic(this)'> "+
         "</td></tr>";

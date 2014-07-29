@@ -7,8 +7,18 @@
 **/
 
 function bimprovedList() {
+    var bimprovedList = this;
     this.user = "Tim";
     this.topics = [];
+
+
+  $.ajax({
+      type: "GET",
+      url: "/api/user",
+  }).done(function(userData) {
+      bimprovedList.user = userData;
+      console.log("user = "+JSON.stringify(bimprovedList.user));
+  });
 
 };
 

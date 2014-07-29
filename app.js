@@ -40,7 +40,7 @@ var ensureAuthenticated = function(req, res, next) {
             //console.log("req.user=" + JSON.stringify(req.user));
             return next();
         } else {
-            res.redirect('/login.html');
+            res.redirect('/#login');
         }
     };
 
@@ -146,7 +146,7 @@ app.use("/secret", ensureAuthenticated, function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
     req.logout();
-    res.redirect('/logout.html');
+    res.redirect('/#login');
 });
 
 // this returns the user info
@@ -196,12 +196,11 @@ app.put('/model/:collection/:id', function(req, res) {
 // to simply asynchronous calls
 app.post('/model/bimproved', function(req, res) {
     console.log("post to bimproved ... " + JSON.stringify(req.body));
-    var collection = db.get(req.params.collection);
+    var collection = db.get('bimproved');
+    var improvement = req.body;
+    improvement.improver = req.user.profile.emails[0].value;
     var promise = collection.insert(req.body);
     promise.success(function(doc){
-        db.get("userProfile").insert(
-            {openID:req.user.openID,
-             improvement:doc});
         res.json(200,doc)});
     promise.error(function(error){res.json(404,error)});
 });
