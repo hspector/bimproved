@@ -1,7 +1,7 @@
 body{
  background-image: url("lightBlue.jpg");
  background-size: 100%;
- font-family: 'Delius';
+ font-family: 'Delius', cursive;
  color:black;
  
 }
@@ -17,7 +17,9 @@ h2 {
 	font-size: medium;
 	
 }
-
+div#row{
+  font-family: 'Delius', cursive;
+}
 div#email {
   display: inline-block;
 }
