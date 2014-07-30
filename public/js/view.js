@@ -20,13 +20,13 @@ var bimprovedView = (function($){
     }
     
     function refreshUsername(){
-			console.log(bimprovedApp.loggedIn());
+			//console.log(bimprovedApp.loggedIn());
 			//somehow check if they're logged in
 			if(bimprovedApp.loggedIn()==true){
 			var user = bimprovedApp.getEmail(); 
-			var userName = $("#userName").html(user);
+			$("#userName").html(user);
 			}else{
-			var user = "not logged in";
+			var user = "Username";
 			var userName = $("#userName").html(user);
 			}
 	}

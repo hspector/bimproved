@@ -8,7 +8,7 @@
 
 function bimprovedList() {
     var bimprovedList = this;
-    this.user = "Tim";
+    this.user = "none";
     this.topics = [];
 
 

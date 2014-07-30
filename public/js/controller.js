@@ -278,7 +278,7 @@ var bimprovedApp = (function($) {
 		return email;
     }
 	function loggedIn(){
-        if(myList.user.profile.emails!=undefined){
+        if(myList.user!="none"){
 		return true;
 		}
 		return false;
