@@ -1,7 +1,7 @@
 body{
  background-image: url("lightBlue.jpg");
  background-size: 100%;
- font-family: 'Delius';
+ font-family: 'Delius', cursive;
  color:black;
  
 }
@@ -17,7 +17,9 @@ h2 {
 	font-size: medium;
 	
 }
-
+div#row{
+  font-family: 'Delius', cursive;
+}
 div#email {
   display: inline-block;
 }
@@ -117,6 +119,11 @@ padding-left:50px;
 	padding-right:5px;
 	padding-bottom:5px;
 }
+.right{
+	position: relative;
+    left: 10px;
+    
+}
 .logo:hover{
 	cursor:pointer;
 	opacity:0.5;
@@ -140,9 +147,16 @@ table#login{
 table#bottomFilters{
   width: 100%;
 }
+div#searchBox{
+  width: 50vw;
+  margin: auto;
+}
+table#advSearch{
+  width: 50vw;
+}
 .map{
 	width: 1140px;
-    height: 400px;	
+  height: 400px;	
 }
 .scroll{
 	overflow-y:scroll;

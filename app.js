@@ -19,6 +19,71 @@ var db = monk('localhost:27017/bimproved');
 //var redisClient = require('redis').createClient();
 //var RedisStore = require('connect-redis')(session);
 
+
+//**********************************************************
+// The following is needed for the passport authentication 
+//**********************************************************
+
+var User = db.get("user");
+
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+var redisClient = require('redis').createClient();
+var RedisStore = require('connect-redis')(session);
+
+var passport = require('passport');
+var GoogleStrategy = require('passport-google').Strategy;
+
+var ensureAuthenticated = function(req, res, next) {
+        if (req.isAuthenticated()) {
+            //console.log("req.user=" + JSON.stringify(req.user));
+            return next();
+        } else {
+            res.redirect('/#login');
+        }
+    };
+
+passport.serializeUser(function(user, done) {
+    //console.log("serializeUser: "+JSON.stringify(user));
+    done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    //console.log("deserializeUser: "+JSON.stringify(obj));
+    done(null, obj);
+});
+
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://localhost:7000/auth/google/return',
+    realm: 'http://localhost:7000/'
+}, function(identifier, profile, done) {
+    console.log("\nGoogleStrategy:\nidentifier=" + JSON.stringify(identifier) + "  profile=" + JSON.stringify(profile));
+    User.find({
+        openID: identifier
+    }, function(err, user) {
+        console.log("err = " + JSON.stringify(err) + "\n  user=" + JSON.stringify(user));
+        if (user.length == 0) {
+            // if this is the first visit for the user, then insert him/her into the database
+            user = {};
+            user.openID = identifier;
+            user.profile = profile;
+            //console.log("inserting user:"+ JSON.stringify(user));
+            db.get("user").insert(user);
+            //console.log("inserted user");
+            done(null, user);
+        } else {
+            // the user has been here before and there should only be one user
+            // matching the query (user[0]) so pass user[0] as user ...
+            console.log("Google Strategy .. user = " + JSON.stringify(user));
+            done(err, user[0]);
+        }
+    });
+}));
+
+//**********************************************************
+
 // serve static content from the public folder 
 app.use("/", express.static(__dirname + '/public'));
 //app.use(session({secret: 'hey'}));
@@ -33,6 +98,64 @@ app.use(function(req, res, next) {
     //console.log("myData = "+JSON.stringify(myData));
     next();
 });
+
+
+//**********************************************************
+// This is needed for the passport authentication
+// start using sessions...
+//**********************************************************
+//app.use(session({ secret: 'jfjfjfjf89fd89sd90s4j32kl' }));
+app.use(cookieParser());
+app.use(session({
+    secret: 'unguessable',
+    store: new RedisStore({
+        client: redisClient
+    })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.get('/auth/google/:return?', passport.authenticate('google', {
+    successRedirect: '/#improvementList',
+    failureRedirect: '/login'
+}));
+
+
+// serve static content from the public folder 
+app.use("/login.html", express.static(__dirname + '/public/login.html'));
+app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
+
+// we require everyone to login before they can use the app!
+app.use(ensureAuthenticated, function(req, res, next) {
+    next()
+});
+
+//**********************************************************
+
+
+//**********************************************************
+// this is just to demonstrate how to use the ensureAuthenticated middleware
+// to restrict access to a route to authenticated users
+//**********************************************************
+app.use("/secret", ensureAuthenticated, function(req, res) {
+    res.redirect("http://www.brandeis.edu");
+})
+
+
+app.get('/auth/logout', function(req, res) {
+    req.logout();
+    res.redirect('/#login');
+});
+
+// this returns the user info
+app.get('/api/user', ensureAuthenticated, function(req, res) {
+    res.json(req.user);
+});
+//**********************************************************
+
+
 
 
 // get a particular topic from the model
@@ -71,11 +194,23 @@ app.put('/model/:collection/:id', function(req, res) {
 // add new topic to the model
 // in this example we show how to use javascript promises
 // to simply asynchronous calls
+app.post('/model/bimproved', function(req, res) {
+    console.log("post to bimproved ... " + JSON.stringify(req.body));
+    var collection = db.get('bimproved');
+    var improvement = req.body;
+    improvement.improver = req.user.profile.emails[0].value;
+    var promise = collection.insert(req.body);
+    promise.success(function(doc){
+        res.json(200,doc)});
+    promise.error(function(error){res.json(404,error)});
+});
+
 app.post('/model/:collection', function(req, res) {
     console.log("post ... " + JSON.stringify(req.body));
     var collection = db.get(req.params.collection);
     var promise = collection.insert(req.body);
-    promise.success(function(doc){res.json(200,doc)});
+    promise.success(function(doc){
+        res.json(200,doc)});
     promise.error(function(error){res.json(404,error)});
 });
 

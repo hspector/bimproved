@@ -29,8 +29,11 @@
 <body>
   <div class="container">
     <div class="page-header background">
-		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('home')"/>
-        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('home')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('home')"/></span> </h1>
+		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('profile')"/>
+		<font class = "whiteOutline right" size="4.5" id="userName"></font>
+		<font class = "whiteOutline" size="4.5">
+		</font>	
+        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('profile')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('profile')"/></span> </h1>
    </div>
 	<div id="map-view" class="view">
 		<div id='cssmenu'>
@@ -38,7 +41,7 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
 		<body>
@@ -53,14 +56,28 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
-			<div class= "row">
+			<p>
+		<br><font size="5">
+		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
+		Whether it be a broken window, bad food, or crazy turkeys, you can post your issues onto this forum and
+		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
+		campus. If we work together, Brandeis can be a better place for everyone!
+		</p></font>
+   </div>
+   
+    <div id="login-view" class="view">
+	
+<div class= "row">
 				
 				<div class = "border2" id="border2">
 					
-						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span><br><br>
+						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span>
+						<font class = "whiteOutline" size="4.5"><center> Please <a href="/auth/google">Click Here</a> to login using your gmail or Brandeis login
+and then click here <button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Access B-Improved! </button></center></font>
+						<br>
 						<font class = "whiteOutline" size="4.5">
 							"I'm so addicted to this app it has replaced Facebook"  - Jeremy <br><br>
 						</font>						
@@ -68,7 +85,7 @@
 							"The brandeis campus is now the nicest campus in the world!"-CampusRatings.com<br><br>
 						</font>
 						<font class = "whiteOutline" size="4.5">
-							"Due to this godsend there are no more rats in Sherman!"  -Heather<br><br>
+							"This app really helps those poor turkeys that fly into windows!"  -Heather<br><br>
 						</font>
 						<font class = "whiteOutline" size="4.5">
 							"This app makes life worth living!"  -Student<br><br>
@@ -86,8 +103,13 @@
 			</div>
 
    </div>
-   
-    <div id="login-view" class="view">
+
+   <div id="logout-view" class="view">
+        Click <a href="/auth/logout">here to logout</a>
+
+   </div>
+
+    <div id="old-login-view" class="view">
 	
    	<h2> 	<button class = "btn btn-info" onclick="bimprovedApp.showView('about')"> About </button> </h2><br><br>
 			<div style="text-align:center;">
@@ -110,24 +132,13 @@
 			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>
    </div>
    
-   <div id="about-view" class="view">
-	<center><button class = "btn btn-info" onclick="bimprovedApp.showView('login')"> Login </button></center>
-	<p>
-		<br><font size="5">
-		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
-		Whether it be a broken window, bad food, or crazy turkeys, you can post your issues onto this forum and
-		they will be taken care of. Our hope is that this app will improve the experience of everyone on Brandeis 
-		campus. If we work together, Brandeis can be a better place for everyone!
-		</p></font>
-
-   </div>
     <div id="confirm-view" class="view background1">
 	<div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
 	<p id="confirmation">
@@ -136,6 +147,7 @@
 	</font></p>
 	<br>
    </div>
+  	
 	<div id="improvementPage-view" class="view">
 		
 		<div id='cssmenu'>
@@ -143,7 +155,7 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
+   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
 			</ul>
 			</div>
 			<br>
@@ -240,14 +252,10 @@
 				</div>
 					<center>
 					<button class="btn btn-info btn btn-lg" onclick ="bimprovedApp.addtopic(where, room, problem, when, category)">
-							Submit </button></td></center> 
-				
-						
-	</div>
-   
-   
-   <div id="improvementList-view" class="view">
-   <div id='cssmenu'>
+					Submit </button></td></center> 
+				</div>
+   <div id="profile-view" class="view">
+    <div id='cssmenu'>
 			<ul>
 				
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
@@ -255,11 +263,11 @@
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
    				<li class='last' onclick="bimprovedApp.showView('login')"><a href='#'><span>Logout</span></a></li>
 			</ul>
-			</div>
-	<br>
-	<br>
+	</div>
+		<br><br>
+		<center><font class = "whiteOutline" size= "5"> Your Request History </font> </center>
+		<br><br>
 		<div class = "scroll">
-		<br>
         <table class="table table-striped">
             <thead class= "tableHead">
                 <tr>
@@ -268,6 +276,43 @@
                     <th>Problem</th>
                     <th>When</th>
 					<th>Category</th>
+					<th>Delete</th>
+                </tr>
+            </thead>
+			
+            <tbody class = "scroll" id="topicTableBody1">
+            </tbody>
+        </table>
+	</div>
+	</div>
+    <div id="improvementList-view" class="view">
+    <div class= "row">
+    <div class = "col-md-2 col-md">
+		<input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()">
+	</div>
+	<div class = "col-md-10 col-md-pull-1">
+    <div id='cssmenu'>
+			<ul>
+				
+   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
+   				<li class='last' onclick="bimprovedApp.showView('logout')"><a href='#'><span>Logout</span></a></li>
+			</ul>
+			</div>
+	</div>		
+		<br><br><br>
+		
+		<div class = "scroll">
+        <table class="table table-striped">
+            <thead class= "tableHead">
+                <tr>
+                    <th>Where</th>
+					<th>Room#</th>
+                    <th>Problem</th>
+                    <th>When</th>
+					<th>Category</th>
+					<th>E-mail</th>
 					<th>Resolved</th>
 					<th>Delete</th>
                 </tr>
@@ -278,77 +323,37 @@
 	</div>
 		<br>
 		<br>
-		<br>
-<<<<<<< HEAD
-       <table id="bottomFilters">
- 			<tr>
- 				<th><div>
- 					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()"> Show Resolved Topics</label>
- 				</div></th>
- 				<th><div>
- 					<label><input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"></label>
- 				</div></th>
- 				<th><div>
- 					<label> <input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">Advanced Search</input></label>
- 				</div></th>
- 			</tr>
- 		</table>
-		<table class="table table-striped" id="advSearch" style="display:none;"> 
-  		<thead>
-  			<tr>
-				<th><div>
-					<label><input id="locationFilter" type="text"  class="form-control" placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
- 					</label>
-				</div></th>
- 				<th><div>
-					<label><input id="problemFilter"  type="text"  class="form-control" placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
-					</label>
-				</div></th>
- 				<th><div>
-					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
-  					</label>
-=======
 		<table id="bottomFilters">
 			<tr>
 				<th><div>
-					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()"> Show Resolved Topics</label>
+					<input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">&nbsp&nbspAdvanced Search</input>
 				</div></th>
 				<th><div>
-					<label><input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()"></label>
-				</div></th>
-				<th><div>
-					<label> <input id="advSearchCB" class="checkbox-inline" type="checkbox" onchange="bimprovedApp.advancedSearch()">Advanced Search</input></label>
+					<label><input id="showCompleteCheckbox" class = "checkbox-inline" type="checkbox" onclick="bimprovedApp.refreshView()">&nbsp&nbspShow Resolved Topics</label>
 				</div></th>
 			</tr>
 		</table>
-       <table class="table table-striped" id="advSearch" style="display:none;"> 
+		<br>
+       <table class="table" id="advSearch" style="display:none;"> 
 		<thead>
 			<tr>
-				<th><div class="checkbox-inline">
-					<label><input id="locationFilter" type="text"  class="form-control" placeholder= "search by location" onchange="bimprovedApp.refreshView()"> 
-					</label>
+				<th><div class="form-group">
+					<input id="locationFilter" type="text"  class="form-control" placeholder= "Search by location" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
-				<th>
-				<div class="checkbox-inline">
-					<label><input id="problemFilter"  type="text"  class="form-control" placeholder= "search by problem" onchange="bimprovedApp.refreshView()"> 
-					
-						</label></th>
-				</div>
-				<th><div class="checkbox-inline">
-					<label><input id="dateFilter" type="text"  class="form-control" placeholder= "search by date" onchange="bimprovedApp.refreshView()"> 
-					</label>
+				<th><div class='form-group'>
+					<input id="problemFilter"  type="text"  class="form-control" placeholder= "Search by problem" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
-				<th><div class="checkbox-inline">
-					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
-					</label>
->>>>>>> f89fd98c8aa48f23a176c197db1e868042316158
+			</tr><tr>
+				<th><div class="form-group">
+					<input id="dateFilter" type="text"  class="form-control" placeholder= "Search by date" onchange="bimprovedApp.refreshView()"> 
 				</div></th>
-				<th><div>
-					<label><input id="categoryFilter" type="text"  class="form-control" placeholder= "search by category" onchange="bimprovedApp.refreshView()"> 
-  					</label>
-  				</div></th>
-  			</tr>
-
+				<th><div class="form-group">
+					<input id="categoryFilter" type="text"  class="form-control" placeholder= "Search by category" onchange="bimprovedApp.refreshView()"> 
+				</div></th>
+			</tr>
+		</thead>
+	</table>
+	<br>	
     </div>
 	</div>
 </body>

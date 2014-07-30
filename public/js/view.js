@@ -7,8 +7,10 @@ var bimprovedView = (function($){
     
     function refreshView(myData){
         refreshTable(myData.topics);
+		refreshTable1(myData.topics);
         updateTitle(myData.user);
-		refreshMap(myData.topics);     
+		refreshMap(myData.topics); 
+		refreshUsername();
     }
     
     // updates the title with the user's name
@@ -17,7 +19,17 @@ var bimprovedView = (function($){
         $("#title").html(newTitle);
     }
     
-    
+    function refreshUsername(){
+			console.log(bimprovedApp.loggedIn());
+			//somehow check if they're logged in
+			if(bimprovedApp.loggedIn()==true){
+			var user = bimprovedApp.getEmail(); 
+			var userName = $("#userName").html(user);
+			}else{
+			var user = "not logged in";
+			var userName = $("#userName").html(user);
+			}
+	}
     function sorttopics(topics){
         var sortedtopics = topics.slice();  // make a copy of topics
         sortedtopics.sort(function(a,b){ return(a.action > b.action)});
@@ -98,6 +110,30 @@ var bimprovedView = (function($){
                 var topicTableBody = $("#topicTableBody").html(rows);
 
     }
+	function refreshTable1(mytopics/*the list of improvements with users*/){ 
+				console.log("Called");
+                var rows = "";
+                var len = mytopics.length;
+				//var filteredtopics = filtertopics(mytopics);
+                //var sortedtopics = sorttopics(filteredtopics);
+				var topics = mytopics;
+                //console.log("filteredtopics = "+ JSON.stringify(filteredtopics));
+                //console.log("sortedtopics = "+JSON.stringify(sortedtopics));
+                
+                for(var n=0; n<topics.length; n++){
+					//console.log(n + " is " + bimprovedApp.getEmail());
+					//console.log(n + " is " + topics[n].improver);
+					if(bimprovedApp.getEmail() == topics[n].improver){ 
+                    var topic = topics[n];
+					rows = rows + topicToRow1(topic);
+					}
+                    
+					//console.log("rows = "+rows);
+                }
+
+                var topicTableBody1 = $("#topicTableBody1").html(rows);
+
+    }
 	
     // convert an topic into an HTML tr element
     function topicToRow(topic){
@@ -110,13 +146,29 @@ var bimprovedView = (function($){
         "</td><td>"+
             topic.when+  
         "</td><td>"+topic.category+
+        "</td><td>"+
+            topic.improver+
         "</td><td> <input type='checkbox' sid='"+topic.id+"' onclick='bimprovedApp.resolvetopic(this)' "+resolved(topic)+ "> "+ 
 		"</td><td> <span class='glyphicon glyphicon-remove red'  sid='"+topic.id+"' onclick='bimprovedApp.handleDeletetopic(this)'> "+
         "</td></tr>";
         return row;
     }
         
-    
+    // convert an topic into an HTML tr element
+    function topicToRow1(topic){
+        var row = 
+        "<tr><td>"+topic.where+
+		"</td><td>"+ 
+            topic.room+ 
+        "</td><td>"+ 
+            topic.problem+ 
+        "</td><td>"+
+            topic.when+  
+        "</td><td>"+topic.category+
+		"</td><td> <span class='glyphicon glyphicon-remove red'  sid='"+topic.id+"' onclick='bimprovedApp.handleDeletetopic(this)'> "+
+        "</td></tr>";
+        return row;
+    }
     function resolved(topic) {
         if(topic.resolved) return "checked";
         else return "";

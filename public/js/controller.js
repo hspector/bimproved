@@ -261,11 +261,29 @@ var bimprovedApp = (function($) {
     function resolvetopic(element) {
         var topicId = element.getAttribute("sid");
         var topic;
+ 
         console.log("resolving item "+topicId);
-        topic = myList.getElement(topicId);
-        topic.resolved= !topic.resolved;
+        if (isAdmin()){
+            topic = myList.getElement(topicId);
+            topic.resolved= !topic.resolved;
+        }
         refreshView();
     }
+    
+    function isAdmin(){
+        return(myList.user.profile.emails[0].value == "tjhickey@brandeis.edu");
+    }
+	function getEmail(){
+        var email = myList.user.profile.emails[0].value;
+		return email;
+    }
+	function loggedIn(){
+        if(myList.user.profile.emails!=undefined){
+		return true;
+		}
+		return false;
+    }
+    
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
    		document.getElementById('advSearch').style.display = 'table';
@@ -354,15 +372,14 @@ var bimprovedApp = (function($) {
 
     // here is were we decide what is visible to the outside!
     bimprovedApp = {
+        myList:myList,
         start: start,
+		getEmail: getEmail,
 		getPoint:getPoint,
+		loggedIn: loggedIn,
 		resetPlaceholders:resetPlaceholders,
-<<<<<<< HEAD
-		advancedSearch: advancedSearch,
-=======
         valiDate: valiDate,
         resetPlaceholders: resetPlaceholders,
->>>>>>> f89fd98c8aa48f23a176c197db1e868042316158
 		initialize: initialize,
 		addMarker: addMarker,
         addtopic: addtopic,
