@@ -16,9 +16,22 @@ var bimprovedApp = (function($) {
     var myList = new bimprovedList();
     
     var showView = function(selected) {
+      if (myList.user=="none"){
+        selected = "login";
+        alert("you must login to use this site!");
+    }
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
     };
+    
+    var setView = function(){
+        var view = window.location.hash;
+        if ((view=="") || (myList.user=="none")) {
+            showView("login")
+        } else {
+            showView(view.substring(1));
+        }
+    }
 	function resetPlaceholders() {
 		console.log("reset method called");
 		var element1 = document.getElementById("problem");
@@ -273,6 +286,16 @@ var bimprovedApp = (function($) {
     function isAdmin(){
         return(myList.user.profile.emails[0].value == "tjhickey@brandeis.edu");
     }
+	function getEmail(){
+        var email = myList.user.profile.emails[0].value;
+		return email;
+    }
+	function loggedIn(){
+        if(myList.user!="none"){
+		return true;
+		}
+		return false;
+    }
     
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
@@ -308,7 +331,8 @@ var bimprovedApp = (function($) {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
-        showView("login");
+        setView();
+        //showView("login");
     }
 	var timer = null;
 	
@@ -364,7 +388,9 @@ var bimprovedApp = (function($) {
     bimprovedApp = {
         myList:myList,
         start: start,
+		getEmail: getEmail,
 		getPoint:getPoint,
+		loggedIn: loggedIn,
 		resetPlaceholders:resetPlaceholders,
         valiDate: valiDate,
         resetPlaceholders: resetPlaceholders,

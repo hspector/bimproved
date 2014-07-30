@@ -43,20 +43,7 @@ var ensureAuthenticated = function(req, res, next) {
             res.redirect('/#login');
         }
     };
-// Function to download file using wget
-var download_file_wget = function(file_url) {
 
-    // extract the file name
-    var file_name = url.parse(/Users/HeatherNSpector/Desktop/Audio/Problem.wav).pathname.split('/').pop();
-    // compose the wget command
-    var wget = 'sh call_reco.sh' + DOWNLOAD_DIR + ' ' + file_url;
-    // excute wget using child_process' exec function
-
-    var child = exec(wget, function(err, stdout, stderr) {
-        if (err) throw err;
-        else console.log(file_name + ' downloaded to ' + DOWNLOAD_DIR);
-    });
-};
 passport.serializeUser(function(user, done) {
     //console.log("serializeUser: "+JSON.stringify(user));
     done(null, user);
@@ -66,6 +53,7 @@ passport.deserializeUser(function(obj, done) {
     //console.log("deserializeUser: "+JSON.stringify(obj));
     done(null, obj);
 });
+
 
 passport.use(new GoogleStrategy({
     returnURL: 'http://localhost:7000/auth/google/return',
@@ -139,6 +127,12 @@ app.get('/auth/google/:return?', passport.authenticate('google', {
 app.use("/login.html", express.static(__dirname + '/public/login.html'));
 app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
 
+
+//**********************************************************
+app.get('/api/user', function(req,res){
+	res.json("empty");
+})	
+
 // we require everyone to login before they can use the app!
 app.use(ensureAuthenticated, function(req, res, next) {
     next()
@@ -160,19 +154,6 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
-/* app.get('/auth/login'), function(req,res) {
-    req.login();
-    res.redirect('/improvementPage')
-} */ //I tried this. It doesn't seem to work. ugh. - Heather.
-
-// this returns the user info
-app.get('/api/user', ensureAuthenticated, function(req, res) {
-    res.json(req.user);
-});
-//**********************************************************
-
-
-
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {

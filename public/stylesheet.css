@@ -119,6 +119,11 @@ padding-left:50px;
 	padding-right:5px;
 	padding-bottom:5px;
 }
+.right{
+	position: relative;
+    left: 10px;
+    
+}
 .logo:hover{
 	cursor:pointer;
 	opacity:0.5;
