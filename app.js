@@ -131,6 +131,12 @@ app.get('/auth/google/:return?', passport.authenticate('google', {
 app.use("/login.html", express.static(__dirname + '/public/login.html'));
 app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
 
+
+//**********************************************************
+app.get('/api/user', function(req,res){
+	res.json("empty");
+})	
+
 // we require everyone to login before they can use the app!
 app.use(ensureAuthenticated, function(req, res, next) {
     next()
@@ -152,6 +158,7 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
+<<<<<<< HEAD
 
 // this returns the user info
 app.get('/api/user', ensureAuthenticated, function(req, res) {
@@ -161,6 +168,8 @@ app.get('/api/user', ensureAuthenticated, function(req, res) {
 
 
 
+=======
+>>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {
