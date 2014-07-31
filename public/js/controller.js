@@ -27,9 +27,11 @@ var bimprovedApp = (function($) {
 	
 	var setView = function(){
       var view = window.location.hash;
-        if ((view=="") || (myList.user=="none")) {
+        if ((view=="")) { //} || (myList.user=="none")) {
+            alert("view="+view+"  myList.user="+myList.user);
             showView("login")
         } else {
+            alert("showing the right view! "+view.substring(1));
             showView(view.substring(1));
         }
      }
@@ -331,9 +333,10 @@ var bimprovedApp = (function($) {
     function start() {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
+        //setView();
         bimprovedView.refreshView(myList);
-        setView();
-		//showView("login");
+
+		showView("login");
     }
 	var timer = null;
 	
