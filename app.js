@@ -158,18 +158,12 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
-<<<<<<< HEAD
 
 // this returns the user info
 app.get('/api/user', ensureAuthenticated, function(req, res) {
     res.json(req.user);
 });
 //**********************************************************
-
-
-
-=======
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {
