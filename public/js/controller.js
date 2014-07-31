@@ -19,7 +19,6 @@ var bimprovedApp = (function($) {
 	  if (myList.user=="none"){
 	  console.log("user is " + myList.user);
       selected = "login";
-      console.log(myList.user)
       //alert("you must login to use this site!");
       }
       window.location.hash = '#' + selected;
@@ -36,7 +35,6 @@ var bimprovedApp = (function($) {
             showView(view.substring(1));
         }
      }
-
 	function resetPlaceholders() {
 		console.log("reset method called");
 		var element1 = document.getElementById("problem");
@@ -297,10 +295,8 @@ var bimprovedApp = (function($) {
     }
 	function loggedIn(){
         if(myList.user!="none"){
-        document.getElementById('cssmenu').style.display = 'block';
 		return true;
 		}
-		document.getElementById('cssmenu').style.display = 'none';
 		return false;
     }
     
