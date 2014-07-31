@@ -33,8 +33,12 @@ var redisClient = require('redis').createClient();
 var RedisStore = require('connect-redis')(session);
 
 var passport = require('passport');
-var GoogleStrategy = require('passport-google').Strategy;
 
+var GoogleStrategy = require('passport-google').Strategy;
+/*
+app.get('/api/user', function(req,res){
+	res.json("none");
+})*/
 var ensureAuthenticated = function(req, res, next) {
         if (req.isAuthenticated()) {
             //console.log("req.user=" + JSON.stringify(req.user));
@@ -154,6 +158,18 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
+<<<<<<< HEAD
+
+// this returns the user info
+app.get('/api/user', ensureAuthenticated, function(req, res) {
+    res.json(req.user);
+});
+//**********************************************************
+
+
+
+=======
+>>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {
