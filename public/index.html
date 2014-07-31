@@ -35,8 +35,7 @@
 		</font>	
         <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('profile')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('profile')"/></span> </h1>
    </div>
-	<div id="map-view" class="view">
-		<div id='cssmenu'>
+     <div id='cssmenu'>
 			<ul>
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
@@ -44,6 +43,7 @@
    				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
 			</ul>
 			</div>
+	<div id="map-view" class="view">
 		<body>
 		<center><div id="map_canvas" style="width: 84vw; height: 60vh"></div></center>
 		</form>
@@ -51,14 +51,6 @@
 		
 	</div>
 	<div id="home-view" class="view">
-		<div id='cssmenu'>
-			<ul>
-   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
-			</ul>
-			</div>
 			<p>
 		<br><font size="5">
 		Hello Brandeis student, faculty member, or administrator. Your dreams have come true! With this app, you can now post requests to better Brandeis campus, review these requests, and do something about them. 
@@ -110,39 +102,8 @@
         Click <a href="/auth/logout">here to logout</a>
 
    </div>
-
-    <div id="old-login-view" class="view">
-	
-   	<h2> 	<button class = "btn btn-info" onclick="bimprovedApp.showView('about')"> About </button> </h2><br><br>
-			<div style="text-align:center;">
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<label for="email" class="col-sm-4 control-label">Email</label>
-						<div class="col-sm-8 inp">
-							<input type="email" size="35" class="form-control" id="email" placeholder="Email">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="password" class="col-sm-4 control-label">Password</label>
-						<div class="col-sm-8 inp">
-							<input type="password" class="form-control" id="password" placeholder ="Password" onchange= "bimprovedApp.signIn()" >
-						</div>
-				</div>
-			</form>
-			</div>
-			<br><br>
-			<center><button class = "btn btn-info" onclick= "bimprovedApp.signIn()"> Login </button></center>
-   </div>
    
     <div id="confirm-view" class="view background1">
-	<div id='cssmenu'>
-			<ul>
-   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
-			</ul>
-			</div>
 	<p id="confirmation">
 	<br><font size= "3">
 	You have succesfully submitted your improvement. Thank you!
@@ -151,15 +112,6 @@
    </div>
   	
 	<div id="improvementPage-view" class="view">
-		
-		<div id='cssmenu'>
-			<ul>
-   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
-			</ul>
-			</div>
 			<br>
 			<br>
 			<center>
@@ -257,15 +209,6 @@
 					Submit </button></td></center> 
 				</div>
    <div id="profile-view" class="view">
-    <div id='cssmenu'>
-			<ul>
-				
-   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
-			</ul>
-	</div>
 		<br><br>
 		<center><font class = "whiteOutline" size= "5"> Your Request History </font> </center>
 		<br><br>
@@ -293,15 +236,6 @@
 		<input id="searchFilter" class="form-control" type="text"  placeholder= "search" onchange="bimprovedApp.refreshView()">
 	</div>
 	<div class = "col-md-10 col-md-pull-1">
-    <div id='cssmenu'>
-			<ul>
-				
-   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
-   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
-			</ul>
-			</div>
 	</div>		
 		<br><br><br>
 		
