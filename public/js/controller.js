@@ -16,19 +16,6 @@ var bimprovedApp = (function($) {
     var myList = new bimprovedList();
     
     var showView = function(selected) {
-<<<<<<< HEAD
-      if (myList.user=="none"){
-        selected = "login";
-        alert("you must login to use this site!");
-    }
-      window.location.hash = '#' + selected;
-      $('.view').hide().filter('#' + selected + '-view').show();
-    };
-    
-    var setView = function(){
-        var view = window.location.hash;
-=======
-<<<<<<< HEAD
 	  if (myList.user=="none"){
 	  console.log("user is " + myList.user);
       selected = "login";
@@ -40,33 +27,12 @@ var bimprovedApp = (function($) {
 	
 	var setView = function(){
       var view = window.location.hash;
-=======
-      if (myList.user=="none"){
-        selected = "login";
-        alert("you must login to use this site!");
-    }
-      window.location.hash = '#' + selected;
-      $('.view').hide().filter('#' + selected + '-view').show();
-    };
-    
-    var setView = function(){
-        var view = window.location.hash;
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
         if ((view=="") || (myList.user=="none")) {
             showView("login")
         } else {
             showView(view.substring(1));
         }
-<<<<<<< HEAD
-    }
-=======
-<<<<<<< HEAD
      }
-=======
-    }
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
 	function resetPlaceholders() {
 		console.log("reset method called");
 		var element1 = document.getElementById("problem");
@@ -367,15 +333,7 @@ var bimprovedApp = (function($) {
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
         setView();
-<<<<<<< HEAD
-        //showView("login");
-=======
-<<<<<<< HEAD
 		//showView("login");
-=======
-        //showView("login");
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
     }
 	var timer = null;
 	
