@@ -52,10 +52,8 @@ var bimprovedApp = (function($) {
 	 function advancedSearch() {
     	if (document.getElementById('advSearchCB').checked) {
     		document.getElementById('advSearch').style.display = 'table';
-    		document.getElementById('searchFilter').style.display = 'none';
     	} else {
     		document.getElementById('advSearch').style.display = 'none';
-    		document.getElementById('searchFilter').style.display = 'table';
     	}
     }
 	 function valiDate() {
@@ -295,8 +293,10 @@ var bimprovedApp = (function($) {
     }
 	function loggedIn(){
         if(myList.user!="none"){
+        document.getElementById('cssmenu').style.display = 'block';
 		return true;
 		}
+		document.getElementById('cssmenu').style.display = 'none';
 		return false;
     }
     
