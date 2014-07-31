@@ -33,8 +33,12 @@ var redisClient = require('redis').createClient();
 var RedisStore = require('connect-redis')(session);
 
 var passport = require('passport');
-var GoogleStrategy = require('passport-google').Strategy;
 
+var GoogleStrategy = require('passport-google').Strategy;
+/*
+app.get('/api/user', function(req,res){
+	res.json("none");
+})*/
 var ensureAuthenticated = function(req, res, next) {
         if (req.isAuthenticated()) {
             //console.log("req.user=" + JSON.stringify(req.user));
@@ -127,12 +131,6 @@ app.get('/auth/google/:return?', passport.authenticate('google', {
 app.use("/login.html", express.static(__dirname + '/public/login.html'));
 app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
 
-
-//**********************************************************
-app.get('/api/user', function(req,res){
-	res.json("empty");
-})	
-
 // we require everyone to login before they can use the app!
 app.use(ensureAuthenticated, function(req, res, next) {
     next()
@@ -154,6 +152,15 @@ app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/#login');
 });
+
+// this returns the user info
+app.get('/api/user', ensureAuthenticated, function(req, res) {
+    res.json(req.user);
+});
+//**********************************************************
+
+
+
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {

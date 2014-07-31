@@ -16,9 +16,23 @@ var bimprovedApp = (function($) {
     var myList = new bimprovedList();
     
     var showView = function(selected) {
+	  if (myList.user=="none"){
+	  console.log("user is " + myList.user);
+      selected = "login";
+      //alert("you must login to use this site!");
+      }
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
     };
+	
+	var setView = function(){
+      var view = window.location.hash;
+        if ((view=="") || (myList.user=="none")) {
+            showView("login")
+        } else {
+            showView(view.substring(1));
+        }
+     }
 	function resetPlaceholders() {
 		console.log("reset method called");
 		var element1 = document.getElementById("problem");
@@ -318,7 +332,8 @@ var bimprovedApp = (function($) {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
         bimprovedView.refreshView(myList);
-        showView("login");
+        setView();
+		//showView("login");
     }
 	var timer = null;
 	
