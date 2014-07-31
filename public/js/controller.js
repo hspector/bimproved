@@ -49,13 +49,6 @@ var bimprovedApp = (function($) {
 		document.getElementById("where").selectedIndex = 0;
 		document.getElementById("category").selectedIndex = 0;
     }
-	 function advancedSearch() {
-    	if (document.getElementById('advSearchCB').checked) {
-    		document.getElementById('advSearch').style.display = 'table';
-    	} else {
-    		document.getElementById('advSearch').style.display = 'none';
-    	}
-    }
 	 function valiDate() {
         var d = new Date();
         var curr_date = d.getDate();
@@ -303,10 +296,8 @@ var bimprovedApp = (function($) {
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
    		document.getElementById('advSearch').style.display = 'table';
-   		document.getElementById('searchFilter').style.display = 'none';
    	} else {
    		document.getElementById('advSearch').style.display = 'none';
-   		document.getElementById('searchFilter').style.display = 'table';
    	}
    }
 
