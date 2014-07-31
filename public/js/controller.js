@@ -52,15 +52,10 @@ var bimprovedApp = (function($) {
 	 function advancedSearch() {
     	if (document.getElementById('advSearchCB').checked) {
     		document.getElementById('advSearch').style.display = 'table';
+    		document.getElementById('searchFilter').style.display = 'none';
     	} else {
     		document.getElementById('advSearch').style.display = 'none';
-    	}
-    }
-    function hideMenu() {
-    	if (bimprovedApp.loggedIn() == true) {
-    		document.getElementById('advSearch').style.display = 'inline';
-    	} else {
-    		document.getElementById('advSearch').style.display = 'none';
+    		document.getElementById('searchFilter').style.display = 'table';
     	}
     }
 	 function valiDate() {
