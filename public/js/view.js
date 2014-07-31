@@ -11,6 +11,7 @@ var bimprovedView = (function($){
         updateTitle(myData.user);
 		refreshMap(myData.topics); 
 		refreshUsername();
+        
     }
     
     // updates the title with the user's name

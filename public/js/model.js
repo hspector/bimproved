@@ -23,6 +23,7 @@ function bimprovedList() {
 };
 
 
+
 //bimprovedList.prototype.server = "http://leiner.cs-i.brandeis.edu:7000"; // this is for production
 bimprovedList.prototype.server = ""; // this is for testing locally
 
