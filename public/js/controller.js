@@ -16,19 +16,6 @@ var bimprovedApp = (function($) {
     var myList = new bimprovedList();
     
     var showView = function(selected) {
-<<<<<<< HEAD
-      if (myList.user=="none"){
-        selected = "login";
-        alert("you must login to use this site!");
-    }
-      window.location.hash = '#' + selected;
-      $('.view').hide().filter('#' + selected + '-view').show();
-    };
-    
-    var setView = function(){
-        var view = window.location.hash;
-=======
-<<<<<<< HEAD
 	  if (myList.user=="none"){
 	  console.log("user is " + myList.user);
       selected = "login";
@@ -40,33 +27,14 @@ var bimprovedApp = (function($) {
 	
 	var setView = function(){
       var view = window.location.hash;
-=======
-      if (myList.user=="none"){
-        selected = "login";
-        alert("you must login to use this site!");
-    }
-      window.location.hash = '#' + selected;
-      $('.view').hide().filter('#' + selected + '-view').show();
-    };
-    
-    var setView = function(){
-        var view = window.location.hash;
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
-        if ((view=="") || (myList.user=="none")) {
+        if ((view=="")) { //} || (myList.user=="none")) {
+            alert("view="+view+"  myList.user="+myList.user);
             showView("login")
         } else {
+            alert("showing the right view! "+view.substring(1));
             showView(view.substring(1));
         }
-<<<<<<< HEAD
-    }
-=======
-<<<<<<< HEAD
      }
-=======
-    }
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
 	function resetPlaceholders() {
 		console.log("reset method called");
 		var element1 = document.getElementById("problem");
@@ -80,15 +48,6 @@ var bimprovedApp = (function($) {
 		element3.placeholder = "N/A";
 		document.getElementById("where").selectedIndex = 0;
 		document.getElementById("category").selectedIndex = 0;
-    }
-	 function advancedSearch() {
-    	if (document.getElementById('advSearchCB').checked) {
-    		document.getElementById('advSearch').style.display = 'table';
-    		document.getElementById('searchFilter').style.display = 'none';
-    	} else {
-    		document.getElementById('advSearch').style.display = 'none';
-    		document.getElementById('searchFilter').style.display = 'table';
-    	}
     }
 	 function valiDate() {
         var d = new Date();
@@ -143,7 +102,7 @@ var bimprovedApp = (function($) {
 			element3.style.border= "solid red";
 			}
 			if(element4.value.length==0){
-			element4.value = "solid red";
+			element4.style.border = "solid red";
 			}
 			if(element3.value.length!=0){
 			element3.style.border= "";
@@ -163,9 +122,9 @@ var bimprovedApp = (function($) {
 			category: element5.value,
         });
 		bimprovedApp.showView('confirm');
-		element2.style.border= "";
+		
 		element3.style.border= "";
-		element3.style.border= "";
+		element4.style.border= "";
     }
     
    
@@ -327,18 +286,18 @@ var bimprovedApp = (function($) {
     }
 	function loggedIn(){
         if(myList.user!="none"){
+        document.getElementById('cssmenu').style.display = 'block';
 		return true;
 		}
+		document.getElementById('cssmenu').style.display = 'none';
 		return false;
     }
     
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
    		document.getElementById('advSearch').style.display = 'table';
-   		document.getElementById('searchFilter').style.display = 'none';
    	} else {
    		document.getElementById('advSearch').style.display = 'none';
-   		document.getElementById('searchFilter').style.display = 'table';
    	}
    }
 
@@ -365,17 +324,10 @@ var bimprovedApp = (function($) {
     function start() {
         myList.loadModel();
         console.log("myList = " + JSON.stringify(myList));
+        //setView();
         bimprovedView.refreshView(myList);
-        setView();
-<<<<<<< HEAD
-        //showView("login");
-=======
-<<<<<<< HEAD
-		//showView("login");
-=======
-        //showView("login");
->>>>>>> f48d9e0deda2a1b88c087365cedda9a29a711e85
->>>>>>> origin/master
+
+		showView("login");
     }
 	var timer = null;
 	

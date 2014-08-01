@@ -35,10 +35,8 @@ var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
 
 var GoogleStrategy = require('passport-google').Strategy;
-/*
-app.get('/api/user', function(req,res){
-	res.json("none");
-})*/
+
+
 var ensureAuthenticated = function(req, res, next) {
         if (req.isAuthenticated()) {
             //console.log("req.user=" + JSON.stringify(req.user));
@@ -63,25 +61,25 @@ passport.use(new GoogleStrategy({
     returnURL: 'http://localhost:7000/auth/google/return',
     realm: 'http://localhost:7000/'
 }, function(identifier, profile, done) {
-    console.log("\nGoogleStrategy:\nidentifier=" + JSON.stringify(identifier) + "  profile=" + JSON.stringify(profile));
+    console.log("\n\n\nGoogleStrategy:\nidentifier=" + JSON.stringify(identifier) + "  profile=" + JSON.stringify(profile));
     User.find({
         openID: identifier
-    }, function(err, user) {
-        console.log("err = " + JSON.stringify(err) + "\n  user=" + JSON.stringify(user));
-        if (user.length == 0) {
+    }, function(err, userList) {
+        console.log("err = " + JSON.stringify(err) + "\n  user=" + JSON.stringify(userList));
+        if (userList.length == 0) {
             // if this is the first visit for the user, then insert him/her into the database
             user = {};
             user.openID = identifier;
             user.profile = profile;
-            //console.log("inserting user:"+ JSON.stringify(user));
+            console.log("inserting user:"+ JSON.stringify(user));
             db.get("user").insert(user);
-            //console.log("inserted user");
+            console.log("inserted user");
             done(null, user);
         } else {
             // the user has been here before and there should only be one user
             // matching the query (user[0]) so pass user[0] as user ...
-            console.log("Google Strategy .. user = " + JSON.stringify(user));
-            done(err, user[0]);
+            console.log("\n\nGoogle Strategy .. user = " + JSON.stringify(userList));
+            done(err, userList[0]);
         }
     });
 }));
@@ -102,6 +100,11 @@ app.use(function(req, res, next) {
     //console.log("myData = "+JSON.stringify(myData));
     next();
 });
+
+
+//app.get('/api/user', function(req,res){
+//	res.json("none");
+//});
 
 
 //**********************************************************
@@ -132,10 +135,12 @@ app.use("/login.html", express.static(__dirname + '/public/login.html'));
 app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
 
 
-//**********************************************************
-app.get('/api/user', function(req,res){
-	res.json("empty");
-})	
+
+app.get('/api/user',  function(req, res) {
+    console.log("in api/user ... "+JSON.stringify(req.user));
+    res.json(req.user);
+});
+
 
 // we require everyone to login before they can use the app!
 app.use(ensureAuthenticated, function(req, res, next) {
@@ -164,6 +169,9 @@ app.get('/api/user', ensureAuthenticated, function(req, res) {
     res.json(req.user);
 });
 //**********************************************************
+
+
+
 
 // get a particular topic from the model
 app.get('/model/:collection/:id', function(req, res) {
