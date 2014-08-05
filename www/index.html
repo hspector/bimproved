@@ -23,6 +23,7 @@
    <link rel="stylesheet" href="styles.css">
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
    <script src="script.js"></script>
+   <!--<script src="tts.js"></script>-->
 
 
 </head>
@@ -41,7 +42,7 @@
    				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
    				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
-   				<li class='last'><a href='/auth/logout'><span>Logout</span></a></li>
+   				<li class='last'><a href='http://leiner.cs-i.brandeis.edu:7000/auth/logout'><span>Logout</span></a></li>
 			</ul>
 	</div>
 	<div id="map-view" class="view">
@@ -70,7 +71,7 @@
 						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span>
 						<!-- <font class = "whiteOutline" size="4.5"><center> Please <a href="/auth/google">Click Here</a> to login using your gmail or Brandeis login -->
 						<font class = "whiteOutline" size="4.5"><center> 
-						<a href="/auth/google">Login here</a> using your Brandeis login
+						<a href="http://leiner.cs-i.brandeis.edu:7000/auth/google">Login here</a> using your Brandeis login
 						</center></font>
 						<br>
 						<font class = "whiteOutline" size="4.5">
@@ -99,7 +100,7 @@
    </div>
 
    <div id="logout-view" class="view">
-        Click <a href="/auth/logout">here to logout</a>
+        Click <a href="leiner.cs-i.brandeis.edu:7000/auth/logout">here to logout</a>
 
    </div>
 
@@ -147,6 +148,7 @@
 			<br> The room is...
 			<br> The date is...
 			<br> The caregory is...
+			<br> 
 			<br>
 			<br>
 			<img src="images/mic.png" class = "mic" alt="mic" width="50" height="50" onclick="recognize()"/></center>
@@ -327,6 +329,18 @@
 <script>
 // this is the code that actually starts the JavaScript application!!
 // when the document has been fully loaded, all the bimprovedApp.start() method
+document.addEventListener("deviceready", startTTS, false);
+function startTTS() {
+		navigator.tts.startup(success, fail);
+
+		function success () {
+			navigator.tts.speak("Welcome to B Improved!");
+		}
+
+		function fail () {
+			navigator.notification.alert("Something went wrong with the TTS engine. Please restart the application.", 'B-Improved', 'Confirm');
+		}
+	}
 $(document).ready(bimprovedApp.start());
 </script>
 </html>
