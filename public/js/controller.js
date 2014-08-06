@@ -286,8 +286,8 @@ var bimprovedApp = (function($) {
     }
 	function loggedIn(){
         if(myList.user!="none"){
-        document.getElementById('cssmenu').style.display = 'block';
-		return true;
+        	document.getElementById('cssmenu').style.display = 'block';
+			return true;
 		}
 		document.getElementById('cssmenu').style.display = 'none';
 		return false;
