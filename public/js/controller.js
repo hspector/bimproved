@@ -14,7 +14,8 @@ var bimprovedApp = (function($) {
 	var newblank = unescape(blank);
     // first create the model
     var myList = new bimprovedList();
-    
+     var clickCount = 0;
+	var bodyClickCount = 0;
     var showView = function(selected) {
 	  if (myList.user=="none"){
 	  console.log("user is " + myList.user);
@@ -23,6 +24,8 @@ var bimprovedApp = (function($) {
       }
       window.location.hash = '#' + selected;
       $('.view').hide().filter('#' + selected + '-view').show();
+	  hideDiv();
+	  resetPlaceholders();
     };
 	
 	var setView = function(){
@@ -52,7 +55,7 @@ var bimprovedApp = (function($) {
 	 function valiDate() {
         var d = new Date();
         var curr_date = d.getDate();
-        var curr_month = d.getMonth();
+        var curr_month = d.getMonth() + 1;
         var curr_year = d.getFullYear();
         var complete_date = (curr_month + "-" + curr_date + "-" + curr_year);
         console.log(complete_date);
@@ -292,7 +295,29 @@ var bimprovedApp = (function($) {
 		document.getElementById('cssmenu').style.display = 'none';
 		return false;
     }
-    
+	
+   function showDiv() {
+	if(clickCount==0){
+		document.getElementById('menuBody').style.display = "block";
+		clickCount++;
+	}else{
+		document.getElementById('menuBody').style.display = "none";
+		clickCount = 0;
+	}
+   }
+   function hideDiv() {
+   document.getElementById('menuBody').style.display = "none";
+   clickCount = 0;
+   }
+   $(document).click(function() {
+		bodyClickCount++;
+	    if(bodyClickCount==clickCount){
+			return;
+		}else{
+		hideDiv();
+		bodyClickCount=0;
+		}
+   });
    function advancedSearch() {
    	if (document.getElementById('advSearchCB').checked) {
    		document.getElementById('advSearch').style.display = 'table';
@@ -385,10 +410,11 @@ var bimprovedApp = (function($) {
         start: start,
 		getEmail: getEmail,
 		getPoint:getPoint,
+		showDiv: showDiv,
+		hideDiv: hideDiv,
 		loggedIn: loggedIn,
 		resetPlaceholders:resetPlaceholders,
         valiDate: valiDate,
-        resetPlaceholders: resetPlaceholders,
 		initialize: initialize,
 		addMarker: addMarker,
         addtopic: addtopic,

@@ -44,6 +44,7 @@ p#confirmation {
 	table-layout: center;
 
 }
+
 .inp{
 width:350px; 
 padding-left:50px;
@@ -91,10 +92,17 @@ padding-left:50px;
 }
 .background1{
 	border-color:AliceBlue;
-	padding-bottom:50px;
+	padding-bottom:30px;
 	border-style:solid;
 	border-width: 5px;
 }
+.blueBackground{
+	background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
+	background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+	position:relative;
+	top:30px;
+}
+
 .border2{
 	border-color:AliceBlue;
 	padding-bottom:10px;
@@ -119,6 +127,9 @@ padding-left:50px;
 	padding-right:5px;
 	padding-bottom:5px;
 }
+.logo1{
+	padding-bottom:15px;
+}
 .right{
 	position: relative;
     left: 10px;
@@ -135,6 +146,15 @@ padding-left:50px;
 .red{
 	color:blue;
 }
+.white:hover{
+	cursor:pointer;
+	color:blue;
+}
+
+.white{
+	color:white;
+	font-size:large;
+}	
 table#bottomFilters{
     width: 100%;
 }
@@ -159,8 +179,8 @@ table#advSearch{
   height: 400px;	
 }
 .scroll{
-	overflow-y:scroll;
-	overflow-x:hidden;
+	overflow-y:auto;
+	overflow-x:auto;
 	height:275px;
 	width:100%;
 }
@@ -178,9 +198,26 @@ table#advSearch{
     background: rgba(0, 118, 255, 0.9); 
     -webkit-box-shadow: inset 0 0 6px rgba(0, 118, 255, 0.9); 
 }
+.fixed{
+	position: absolute;
+	top: 6px;
+	left: 10px;
+	z-index: 1;
+   
+}
+.text-color{
+	color:white;
+}
+.fixed1{
+	position: relative;
+	width:240px;
+	top: -20px;
+	padding-top: 20px;
+	z-index: 1;
+	background: rgba(0, 0, 0, 0.5);
+}
 
-
-#cssmenu,
+/*#cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
 #cssmenu ul li a {
@@ -198,7 +235,7 @@ table#advSearch{
 #cssmenu {
   width: auto;
   color: #ffffff;
-  /*This width makes the menu centered, but stops it from adjusting when the window gets smaller. */
+  /*This width makes the menu centered, but stops it from adjusting when the window gets smaller. 
   width: 49em;
   margin: auto;
 }
@@ -213,7 +250,7 @@ table#advSearch{
 }
 #cssmenu ul {
 background: #1275ae;
-  /* Old browsers */
+  /* Old browsers 
 
   background: -moz-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
   background: -webkit-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);

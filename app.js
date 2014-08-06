@@ -34,7 +34,7 @@ var RedisStore = require('connect-redis')(session);
 
 var passport = require('passport');
 
-var GoogleStrategy = require('passport-google').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
 var ensureAuthenticated = function(req, res, next) {
@@ -42,7 +42,7 @@ var ensureAuthenticated = function(req, res, next) {
             //console.log("req.user=" + JSON.stringify(req.user));
             return next();
         } else {
-            res.redirect('/#login');
+            res.redirect('/login.html');
         }
     };
 
@@ -58,6 +58,38 @@ passport.deserializeUser(function(obj, done) {
 
 
 passport.use(new GoogleStrategy({
+        clientID: '629790772382-4qr51p7b99fcasqgi7nercqkgbl774ua.apps.googleusercontent.com',
+        clientSecret: 'Wbz05Vy38ds7uX2eK9o-jv1X',
+        callbackURL: "http://leiner.cs-i.brandeis.edu:7000/oauth2callback"
+        },
+    function(accessToken, refreshToken, profile, done) {
+        console.log("\n\n*********\n  aT = " + JSON.stringify(accessToken) + 
+            "\n  rt=" + JSON.stringify(refreshToken) +
+            "\n  pr=" + JSON.stringify(profile));
+        User.find({
+        openID: profile.id
+    }, function(err, userList) {
+        console.log("\n\nerr = " + JSON.stringify(err) + "\n  user=" + JSON.stringify(userList));
+        if (userList.length == 0) {
+            // if this is the first visit for the user, then insert him/her into the database
+            var user = {};
+            user.openID = profile.id;
+            user.profile = profile;
+            console.log("inserting user:"+ JSON.stringify(user));
+            db.get("user").insert(user);
+            console.log("inserted user");
+            done(null, user);
+        } else {
+            // the user has been here before and there should only be one user
+            // matching the query (user[0]) so pass user[0] as user ...
+            console.log("\n\nGoogle Strategy .. user = " + JSON.stringify(userList));
+            done(err, userList[0]);
+        }
+	    })}));
+
+
+
+/*passport.use(new GoogleStrategy({
     returnURL: 'http://localhost:7000/auth/google/return',
     realm: 'http://localhost:7000/'
 }, function(identifier, profile, done) {
@@ -69,7 +101,7 @@ passport.use(new GoogleStrategy({
         if (userList.length == 0) {
             // if this is the first visit for the user, then insert him/her into the database
             user = {};
-            user.openID = identifier;
+            user.openID = profile.id;
             user.profile = profile;
             console.log("inserting user:"+ JSON.stringify(user));
             db.get("user").insert(user);
@@ -82,7 +114,7 @@ passport.use(new GoogleStrategy({
             done(err, userList[0]);
         }
     });
-}));
+}));*/
 
 //**********************************************************
 
@@ -124,10 +156,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/auth/google/:return?', passport.authenticate('google', {
-    successRedirect: '/#improvementList',
-    failureRedirect: '/login'
-}));
+app.get('/auth/google',
+    passport.authenticate('google', 
+
+                  {scope: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/plus.login https://www.google.com/m8/feeds https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'}));
+
+
+
+app.get('http://leiner.cs-i.brandeis.edu:7000/oauth2callback', 
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
 
 
 // serve static content from the public folder 
@@ -136,10 +177,11 @@ app.use("/logout.html", express.static(__dirname + '/public/logout.html'));
 
 
 
-app.get('/api/user',  function(req, res) {
+
+/*app.get('/api/user',  function(req, res) {
     console.log("in api/user ... "+JSON.stringify(req.user));
     res.json(req.user);
-});
+});*/
 
 
 // we require everyone to login before they can use the app!
