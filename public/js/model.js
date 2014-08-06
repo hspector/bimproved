@@ -17,7 +17,7 @@ function bimprovedList() {
       url: "/api/user",
   }).done(function(userData) {
       bimprovedList.user = userData;
-      console.log("user = "+JSON.stringify(bimprovedList.user));
+      //console.log("user = "+JSON.stringify(bimprovedList.user));
   });
 
 };
