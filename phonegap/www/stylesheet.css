@@ -1,0 +1,279 @@
+body{
+ background-image: url("lightBlue.jpg");
+ background-size: 100%;
+ font-family: 'Delius', cursive;
+ color:black;
+ 
+}
+h1 {
+	color: black;
+	text-align: center;
+	font-family: 'Delius', cursive;
+	
+}
+h2 {
+	color:black;
+	text-align: center;
+	font-size: medium;
+	
+}
+div#row{
+  font-family: 'Delius', cursive;
+}
+div#email {
+  display: inline-block;
+}
+div#password {
+  display: inline-block;
+}
+div#border2 {
+  text-align: center;
+}
+.h3{
+	border-style:solid;
+	border-width: 1px;
+	border-color:AliceBlue;
+}
+p {
+	color: black;
+	font-family: 'Delius', cursive;
+	
+}
+p#confirmation {
+	text-align: center;
+	table-layout: center;
+
+}
+.inp{
+width:350px; 
+padding-left:50px;
+}
+.border{
+	border-style:solid;
+	border-width: 1px;
+	
+}
+.blue{
+    color:blue;
+}
+.whiteOutline{
+  font-family: Helvetica;
+    color: black;
+	font-weight:bold;
+	text-shadow:
+    -1px -1px 0 white,
+    0px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0px 1px 0 white,
+    1px 1px 0 white;
+}
+.tableHead{
+    background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
+    background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2aabd2', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #28a4c9;
+    color:white;
+}
+.padding{
+	padding-bottom:100%;
+}
+.padding1{
+	padding-bottom:20px;
+}
+.paddingLeft{
+	padding-left:100px;
+}
+.background{
+	background-color:AliceBlue;
+}
+.background1{
+	border-color:AliceBlue;
+	padding-bottom:50px;
+	border-style:solid;
+	border-width: 5px;
+}
+.border2{
+	border-color:AliceBlue;
+	padding-bottom:10px;
+	padding-top:20px;
+	padding-left:20px;
+	border-style:solid;
+	border-width: 5px;
+}
+.wid{
+	width:200px;
+}
+ 
+.mic:hover{
+	cursor:pointer;
+	opacity:0.5;
+}
+.logoStart{
+	background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
+	background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:5px;
+}
+.right{
+	position: relative;
+    left: 10px;
+    
+}
+.logo:hover{
+	cursor:pointer;
+	opacity:0.5;
+}
+.red:hover{
+	cursor:pointer;
+	color:red;
+}
+.red{
+	color:blue;
+}
+table#bottomFilters{
+    width: 100%;
+}
+table#login{
+	color: black;
+	font-family: 'Delius', cursive;
+	width: 100%;
+	text-align: center;
+}
+table#bottomFilters{
+  width: 100%;
+}
+div#searchBox{
+  width: 50vw;
+  margin: auto;
+}
+table#advSearch{
+  width: 50vw;
+}
+.map{
+	width: 1140px;
+  height: 400px;	
+}
+.scroll{
+	overflow-y:scroll;
+	overflow-x:hidden;
+	height:275px;
+	width:100%;
+}
+.scroll::-webkit-scrollbar{
+	width:12px;
+}	
+.scroll::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 171, 0.9); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.scroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 118, 255, 0.9); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 118, 255, 0.9); 
+}
+
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu {
+  width: auto;
+  color: #ffffff;
+  /*This width makes the menu centered, but stops it from adjusting when the window gets smaller. */
+  width: 41em;
+  margin: auto;
+}
+#cssmenu.align-right ul li {
+  float: right;
+  border-right: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.22);
+}
+#cssmenu.align-right ul li a {
+  border-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+#cssmenu ul {
+background: #1275ae;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
+  background: -webkit-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
+  background: -o-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
+  background: -ms-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
+  background: linear-gradient(to top, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
+}
+#cssmenu:after,
+#cssmenu ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu ul li {
+  float: left;
+  display: block;
+  border-right: 1px solid rgba(0, 0, 0, 0.22);
+  z-index: 1;
+}
+#cssmenu ul li::after {
+  content: "";
+  width: 100%;
+  height: 8px;
+  position: absolute;
+  border-top-left-radius: 50% 4px;
+  border-top-right-radius: 50% 4px;
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
+  background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  z-index: 2;
+  bottom: 10px;
+}
+#cssmenu ul li a {
+  display: block;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 3;
+}
+#cssmenu ul li a:hover,
+#cssmenu ul li.active a {
+  color: #ffffff;
+}
+#cssmenu ul li:hover,
+#cssmenu ul li.active {
+  background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
+    background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+ 
+}
+#cssmenu ul li:hover::after,
+#cssmenu ul li.active::after {
+ background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
+    background-image:  linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+}
+
