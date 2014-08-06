@@ -30,35 +30,19 @@
   <div class="container">
     <div class="page-header background">
 		<img src="images/whiteB.png" class = "logoStart logo" alt="logo" width="42" height="42" onclick="bimprovedApp.showView('profile')"/>
-		<font class = "whiteOutline right" size="3" id="userName"></font>
-		<h1> <span class= "logo"><img src="images/logoStart.png" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('profile')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('profile')"/></span> </h1>
-		<div class="page-header blueBackground background1" id = "cssmenu" style = "height:30px">
- 					<span class='glyphicon glyphicon-list white fixed' onclick="bimprovedApp.showDiv()">
-						Menu
-                     </span>	
-		</div>
+		<font class = "whiteOutline right" size="4.5" id="userName"></font>
+		<font class = "whiteOutline" size="4.5">
+		</font>	
+        <h1> <span class= "logo"><img src="images/logoStart.png" class = "logo1" alt="logo1" width="80" height="60" onclick="bimprovedApp.showView('profile')"/>&nbsp;<img src="images/logoEnd.png" class = "logoEnd" alt="logoEnd" width="150" height="42" onclick="bimprovedApp.showView('profile')"/></span> </h1>
    </div>
-	<div id = "menuBody" class = "fixed1" style="display:none;">
- 				<div class = "padding1">
- 					<button  class="btn btn-info" onclick="bimprovedApp.showView('improvementList')">
-                         View list of improvement requests
-                     </button>
- 				</div>
- 				<div class = "padding1">
- 					<button class="btn btn-info" style="width:240px" onclick="bimprovedApp.showView('improvementPage')">
- 						File an improvement 
-					</button></div>	
- 				<div class = "padding1">
-                     <button class = "btn btn-info" style="width:240px" onclick="bimprovedApp.showView('map')"> 
- 						Map 
- 					</button> 
- 				</div>
-				<div class = "padding1 text-color">
-                     <button class = "btn btn-info" style="width:240px"> 
-					 <a class = "text-color" href='/auth/logout'>
- 						Logout 
-					 </a></button> 
- 				</div>
+   <div id='cssmenu'>
+			<ul>
+				
+   				<li class='#'><a href='#' onclick="bimprovedApp.showView('improvementList')"> <span>View List of Improvement Requests</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.resetPlaceholders();bimprovedApp.showView('improvementPage')"><span>File an Improvement</span></a></li>
+   				<li><a href='#' onclick="bimprovedApp.showView('map')"><span>Map</span></a></li>
+   				<li class='last'><a href='https://leiner.cs-i.brandeis.edu:7000/auth/logout'><span>Logout</span></a></li>
+			</ul>
 	</div>
 	<div id="map-view" class="view">
 		<body>
@@ -86,7 +70,7 @@
 						<font class = "whiteOutline" size = "10"> Welcome to </font> <span><img src="images/logoStart.png" class = "padding1" alt="logo1" width="50" height="60" />&nbsp;<img src="images/logoEnd.png" class = "padding1" alt="logoEnd" width="150" height="50"/></span>
 						<!-- <font class = "whiteOutline" size="4.5"><center> Please <a href="/auth/google">Click Here</a> to login using your gmail or Brandeis login -->
 						<font class = "whiteOutline" size="4.5"><center> 
-						<a href="http://leiner.cs-i.brandeis.edu:7000/auth/google">Login here</a> using your Brandeis login
+						<a href="https://leiner.cs-i.brandeis.edu:7000/auth/google">Login here</a> using your Brandeis login
 						</center></font>
 						<br>
 						<font class = "whiteOutline" size="4.5">
@@ -123,12 +107,21 @@
    </div>
   	
 	<div id="improvementPage-view" class="view">
-		<br>
-		<br>
-		<center>
-			<font size= "5"> Type your problem! </font><br>
-		</center>
 			<br>
+			<br>
+			<center>
+			<font size= "5"> Type your problem or speak it! </font><br>
+			<br> Instructions on how to use speech (only works with mobile app):
+			<br> Click the microphone before saying each detail. 
+			<br> Before you describe the detail, say these prompts:
+			<br> The problem is...
+			<br> The location is...
+			<br> The room is...
+			<br> The date is...
+			<br> The caregory is...
+			<br>
+			<br>
+			<img src="images/mic.png" class = "mic" alt="mic" width="50" height="50" onclick="recognize()"/></center>
 			<br>
 			<form role="form">
 				<div class="form-group">

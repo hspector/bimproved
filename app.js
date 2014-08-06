@@ -60,7 +60,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
         clientID: '629790772382-4qr51p7b99fcasqgi7nercqkgbl774ua.apps.googleusercontent.com',
         clientSecret: 'Wbz05Vy38ds7uX2eK9o-jv1X',
-        callbackURL: "http://leiner.cs-i.brandeis.edu:7000/oauth2callback"
+        callbackURL: "http://localhost:7000/oauth2callback"
         },
     function(accessToken, refreshToken, profile, done) {
         console.log("\n\n*********\n  aT = " + JSON.stringify(accessToken) + 
@@ -163,7 +163,7 @@ app.get('/auth/google',
 
 
 
-app.get('http://leiner.cs-i.brandeis.edu:7000/oauth2callback', 
+app.get('/oauth2callback', 
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
         // Successful authentication, redirect home.
